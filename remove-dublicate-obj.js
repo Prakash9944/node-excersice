@@ -13,6 +13,10 @@ var uniqArray = object.filter(function (item, index) {
 
     console.log('index', index)
     console.log('result', result)
+
+    return index === object.findIndex(function (obj) {
+        return JSON.stringify(obj) === toStrin;
+    });
 });
 console.log(uniqArray)
 
