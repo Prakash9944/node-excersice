@@ -1,60 +1,60 @@
-// var User = function (firstName, courseCount) {
+// // var User = function (firstName, courseCount) {
 
-//     this.courseCount = courseCount;
-//     this.firstName =  firstName;
+// //     this.courseCount = courseCount;
+// //     this.firstName =  firstName;
 
-//     this.getCourseCount = function () {
-//         console.log(`Get your course count ${this.courseCount}`)
-//     }
-// }
-
-
-// User.prototype.getSome = function() {
-
-//     console.log('this.firstNames', firstName)
-// };
+// //     this.getCourseCount = function () {
+// //         console.log(`Get your course count ${this.courseCount}`)
+// //     }
+// // }
 
 
-// var r1 = new User('PrakashRaj', 10);
+// // User.prototype.getSome = function() {
 
-// console.log('req', r1.getSome())
+// //     console.log('this.firstNames', firstName)
+// // };
+
+
+// // var r1 = new User('PrakashRaj', 10);
+
+// // console.log('req', r1.getSome())
 
 
 
 
-// function Employee (name) {
+// // function Employee (name) {
+// //     this.name = name;
+// // }
+
+// // var e1 = new Employee("Mark");
+// // e1.getName = function () {
+// //     return this.class = 'test'
+// // }
+
+// // console.log(e1.getName())
+
+
+// var Employee = function (name) {
 //     this.name = name;
 // }
 
-// var e1 = new Employee("Mark");
-// e1.getName = function () {
-//     return this.class = 'test'
+// Employee.prototype.getName = function () {
+//     console.log(this.name)
 // }
 
-// console.log(e1.getName())
+
+// var PermenantEmployee = function (annualSalary) {
+//     this.annualSalary = annualSalary;
+// }
 
 
-var Employee = function (name) {
-    this.name = name;
-}
+// var employee = new Employee('Prakash');
 
-Employee.prototype.getName = function () {
-    console.log(this.name)
-}
+// PermenantEmployee.prototype = employee;
 
 
-var PermenantEmployee = function (annualSalary) {
-    this.annualSalary = annualSalary;
-}
+// var pe = new PermenantEmployee(5000);
 
+// pe.getName()
 
-var employee = new Employee('Prakash');
-
-PermenantEmployee.prototype = employee;
-
-
-var pe = new PermenantEmployee(5000);
-
-pe.getName()
-
-console.log(pe  instanceof Employee)
+// console.log(pe  instanceof Employee)
