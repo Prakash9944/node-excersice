@@ -15,7 +15,7 @@ var uniqArray = object.filter(function (item, index) {
     console.log('result', result)
 
     return index === object.findIndex(function (obj) {
-        return JSON.stringify(obj) === toStrin;
+        return JSON.stringify(obj) === toStrin; // If return true return index positions only
     });
 });
 console.log(uniqArray)
