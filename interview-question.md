@@ -28,3 +28,17 @@
 # Second Interview Questions(Aug 07 2021)
 
 
+
+# Interview Desc 17 2022(Interviewer Payal Shah)
+
+1. what is nodejs
+
+2. what is events nodejs
+
+3. what is module nodejs
+
+4. what file read system nodejs
+
+5. what is ecmascript nodejs
+
+6. what is expressJs nodejs
