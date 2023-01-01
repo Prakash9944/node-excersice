@@ -7,14 +7,12 @@ var object = [
 var uniqArray = object.filter(function (item, index) {
     var toStrin = JSON.stringify(item);
 
-    var result = object.findIndex(function (obj) {
-        return JSON.stringify(obj) === toStrin;
-    });
-
-    console.log('index', index)
-    console.log('result', result)
+    // var result = object.findIndex(function (obj) {
+    //     return JSON.stringify(obj) === toStrin;
+    // });
 
     return index === object.findIndex(function (obj) {
+        // console.log('index', JSON.stringify(obj) === toStrin)
         return JSON.stringify(obj) === toStrin; // If return true return index positions only
     });
 });
