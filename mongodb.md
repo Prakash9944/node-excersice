@@ -1,3 +1,6 @@
+# What is stages
+   * stages are independent and followed by doller sign
+
 # 1. What are some of the advantages of MongoDB
 
     * MongoDB supports field, range-based, string pattern matching type queries. for searching the data in the database
@@ -78,7 +81,7 @@
 
 1. group by
 
-    db.employee.aggregate([{ $group: {'gender': '$gender'}, age: { $gt: '25' },  count: { gender: $count }}])
+    db.person.aggregate([{ $group: {'gender': '$gender'}}])
 
     db.sales.aggregate([{$group: { _id: "$quantity" , total: {$sum: '$quantity'}}}])
 
