@@ -40,31 +40,31 @@
 
 
 //  DIffernces between arrow function and normal fucntion
-function myCar() {
-    console.log("this", this)
-    this.fuel = 0;
-    this.reFuel = function () {
-        const fuel = this.fuel;
-        console.log("fuel", fuel)
-        setTimeout(function () {
-            console.log('this1234', fuel)
-            var fuels = fuel + 100
-            console.log("fuel is", fuels)
-        }, 1000);
-    }
-}
-const benz  = new myCar();
-console.log(benz.reFuel())
+// function myCar() {
+//     console.log("First print", this)
+//     this.fuel = 10;
+//     this.reFuel = function () {
+//         const fuel = this.fuel;
+//         console.log("Second Print", fuel)
+//         setTimeout(function () {
+//             // console.log("Third Print", this)
+//             var fuels = fuel + 100
+//             console.log("fuel is", fuels)
+//         }, 1000);
+//     }
+// }
+// const benz  = new myCar();
+// console.log(benz.reFuel())
 
 // function myCar() {
-//     console.log("this", this)
-//     this.fuel = 0;
-//     console.log("this", this)
+//     console.log("First print", this)
+//     this.fuel = 1;
+//     console.log("Second Print", this)
 //     this.reFuel = function () {
 //         setTimeout( () => {
-//             console.log("thissdsfsd", this)
+//             console.log("Third Print", this)
 //             this.fuel += 100
-//             console.log("fuel is", this.fuel)
+//             console.log("Fourth Print", this.fuel)
 //         }, 1000);
 
 //     }

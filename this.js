@@ -14,7 +14,7 @@
 //         function myFunction4() {
 //             console.log(this)
 //         }
-
+//         // myFunction4()
 //         return anotherObject.myFunction4()
 //     }
 // }
@@ -73,6 +73,7 @@
 // }
 
 // var global = channel.share;
+// console.log(global)
 // console.log(channel.share())
 
 // const channel1 = {
