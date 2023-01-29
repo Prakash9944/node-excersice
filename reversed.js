@@ -1,9 +1,3 @@
-function reverseString(str) {
-
-}
-// return reversedName;
-// var rest = reverseString('hello');
-
 var reversedName = "";
 var name = 'Prakash';
 
