@@ -18,7 +18,7 @@
 
 ## 9. what is mongoose
 
-## 10. what is obserable and promise in angular
+## 10. what is observable and promise in angular
 
 ## 11. how to insert data to mongodb
 
@@ -26,8 +26,6 @@
 
 
 # Second Interview Questions(Aug 07 2021)
-
-
 
 # Interview Desc 17 2022(Interviewer Payal Shah)
 

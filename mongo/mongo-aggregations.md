@@ -1,12 +1,72 @@
+db.survey.find(
+   { results: { $elemMatch: { product: "xyz" } } }
+)
+
+
+
 ### What is a Collection in MongoDB
 
     1 A collection in MongoDB is a group of documents. If a document is the MongoDB analog of a row in a relational database
+
+### MongoDB Lookup
+
+   ## {
+       $lookup:
+         {
+           from: <collection to join>,
+           localField: <field from the input documents>,
+           foreignField: <field from the documents of the "from" collection>,
+           as: <output array field>
+         }
+    }
+
+   ## Example
+
+     db.orders.aggregate( [
+       {
+         $lookup:
+           {
+             from: "inventory",
+             localField: "item",
+             foreignField: "sku",
+             as: "inventory_docs"
+           }
+      }
+    ] )
 
 ### MongoDB stages
 
     1. Mongodb stages are independent and all stage operator prepended by dollar sign
 
         {$match: {query}}
+
+    Stages Types:-
+     $match
+     $group
+     $project
+     $sort
+     $count
+     $limit
+     $skip
+     $out
+
+    1. $count
+    2. $group
+    3. $limit
+    4. $lookup
+    5. $match
+    6. $merge
+    7. $sort
+    8. $project
+    9. $unwind
+    10. $unset
+
+
+### What is expression
+
+    * Expression refer to the name of the input document
+     "$<fieldNam>"
+
 
 ### $Match stage Operator
 
@@ -26,16 +86,22 @@
 
             db.person.aggregate([{$match: {tags: {$size: 3}}}]) // The $size operator matches any array with the number of elements specified by the argument.
 
-            { "_id" : ObjectId("614d6fd341d4e3f1cfa9c9da"), "name" : "prakash", "gender" : "male", "age" : 95 }
-            { "_id" : ObjectId("614d6fda41d4e3f1cfa9c9ec"), "name" : "prakash", "gender" : "male", "age" : 95 }
-            { "_id" : ObjectId("614d6fdb41d4e3f1cfa9c9fe"), "name" : "prakash", "gender" : "male", "age" : 95 }
-            { "_id" : ObjectId("614d6fdb41d4e3f1cfa9ca10"), "name" : "prakash", "gender" : "male", "age" : 95 }
-            { "_id" : ObjectId("614d6fdc41d4e3f1cfa9ca22"), "name" : "prakash", "gender" : "male", "age" : 95 }
-            { "_id" : ObjectId("614d6fdc41d4e3f1cfa9ca34"), "name" : "prakash", "gender" : "male", "age" : 95 }
-            { "_id" : ObjectId("614d6fdd41d4e3f1cfa9ca46"), "name" : "prakash", "gender" : "male", "age" : 95 }
-            { "_id" : ObjectId("614d6fdd41d4e3f1cfa9ca58"), "name" : "prakash", "gender" : "male", "age" : 95 }
-            { "_id" : ObjectId("614d6fde41d4e3f1cfa9ca6a"), "name" : "prakash", "gender" : "male", "age" : 95 }
-            { "_id" : ObjectId("614d6ff241d4e3f1cfa9ca7c"), "name" : "prakash", "gender" : "male", "age" : 95 }
+            db.complex.aggregate([{$match: {arrayOfValues: {$size: 2}}}])
+            { "_id" : ObjectId("5407c76b7b1c276c74f90525"), "field" : "x", "arrayOfValues" : [ "b", "c" ] }
+            { "_id" : ObjectId("5407c76b7b1c276c74f90527"), "field" : "x", "arrayOfValues" : [ "a", "c" ] }
+
+
+
+            db.person.insert([{ "_id" : ObjectId("614d6fd341d4e3f1cfa9c9da"), "name" : "prakash", "gender" : "male", "age" : 55 },
+                                    { "_id" : ObjectId("614d6fda41d4e3f1cfa9c9ec"), "name" : "prakash", "gender" : "male", "age" : 55 },
+                                    { "_id" : ObjectId("614d6fdb41d4e3f1cfa9c9fe"), "name" : "prakash", "gender" : "male", "age" : 55 },
+                                    { "_id" : ObjectId("614d6fdb41d4e3f1cfa9ca10"), "name" : "prakash", "gender" : "male", "age" : 55 },
+                                    { "_id" : ObjectId("614d6fdc41d4e3f1cfa9ca22"), "name" : "prakash", "gender" : "male", "age" : 55 },
+                                    { "_id" : ObjectId("614d6fdc41d4e3f1cfa9ca34"), "name" : "prakash", "gender" : "male", "age" : 55 },
+                                    { "_id" : ObjectId("614d6fdd41d4e3f1cfa9ca46"), "name" : "prakash", "gender" : "male", "age" : 55 },
+                                    { "_id" : ObjectId("614d6fdd41d4e3f1cfa9ca58"), "name" : "prakash", "gender" : "male", "age" : 55 },
+                                    { "_id" : ObjectId("614d6fde41d4e3f1cfa9ca6a"), "name" : "prakash", "gender" : "male", "age" : 55 },
+                                    { "_id" : ObjectId("614d6ff241d4e3f1cfa9ca7c"), "name" : "prakash", "gender" : "male", "age" : 55 }])
 
 
 ### $Group stage Operator
@@ -49,6 +115,12 @@
          }
 
          Example:
+
+            db.orders.aggregate([{$group: {_id: "$item", count: {$sum: "$price"}}}]);
+            { "_id" : "almonds", "count" : 117 }
+            { "_id" : "pecans", "count" : 40 }
+            { "_id" : "tomato", "count" : 90 }
+            { "_id" : "carrot", "count" : 110 }
 
             db.person.aggregate([{ $group: { _id: "$age"} }]) // $age is an expression and its an input value of the mongoDB fields
             { "_id" : 95 }
@@ -64,6 +136,23 @@
             { "_id" : "female" }
             { "_id" : "mentor" }
             { "_id" : "male" }
+
+            * Group BY Multiple Field
+            db.orders.aggregate([{$group: {_id: {test: "$item", pricee: "$price"}}}])
+            { "_id" : { "test" : "almonds", "pricee" : 25 } }
+            { "_id" : { "test" : "tomato", "pricee" : 20 } }
+            { "_id" : { "test" : "tomato", "pricee" : 30 } }
+            { "_id" : { "test" : "carrot", "pricee" : 30 } }
+            { "_id" : { "test" : "almonds", "pricee" : 42 } }
+            { "_id" : { "test" : "pecans", "pricee" : 40 } }
+            { "_id" : { "test" : "carrot", "pricee" : 40 } }
+
+            Group BY count
+            db.orders.aggregate([{$group: {_id: "$item", count: {$sum: 1}}}])
+            { "_id" : "almonds", "count" : 4 }
+            { "_id" : "tomato", "count" : 4 }
+            { "_id" : "carrot", "count" : 3 }
+            { "_id" : "pecans", "count" : 1 }
 
       2. Group by nested fields in person collections
 
@@ -127,7 +216,7 @@
 
     1. $match and $Group and $count
 
-        db.person.aggregate([ {$match: {age: {$gt: 25}} },{ $group: {_id: '$name'}}, {$count: 'nameCount'}])
+        db.person.aggregate([ {$match: {age: {$gt: 25}} },{ $group: {_id: 'age'}}, {$count: 'nameCount'}])
         { "nameCount" : 3 }
 
 ### $Sort

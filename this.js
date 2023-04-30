@@ -1,6 +1,8 @@
+// Video Link https://www.youtube.com/watch?v=ZHNe8gqqCAg&t=13s
+
 // const anotherObject = {
 //     myFunction4 () {
-//         console.log(this);
+//         console.log('this', this);
 //     }
 // }
 
@@ -14,7 +16,7 @@
 //         function myFunction4() {
 //             console.log(this)
 //         }
-//         // myFunction4()
+//         myFunction4() // This function called directly to without any references
 //         return anotherObject.myFunction4()
 //     }
 // }
@@ -50,7 +52,7 @@
 // };
 
 // let a = obj.simple;
-// console.log(obj.simple() == global);
+// console.log(obj.simple() , global); // This is not true because calling ob.sample() called by obj references that's reason this is return current object calling
 // console.log(a() == global);
 
 // function myFucntion () {
@@ -73,7 +75,7 @@
 // }
 
 // var global = channel.share;
-// console.log(global)
+// // console.log(global())
 // console.log(channel.share())
 
 // const channel1 = {
@@ -92,6 +94,13 @@
 //     }
 // }
 
+
+// function playVideo() {
+//     console.log(this)
+// }
+
+// playVideo.call({name: "prakashraj"});
+
 // var dara = channel1.showVideos()
 
 // function Share(channel_tittle) {
@@ -109,13 +118,13 @@
 // txt() // When call function window will added txt () function
 
 
-// var obj = {
+// var objOne = {
 //     thiss: function () {
 //         console.log(this)
 //     }
 // };
 
-// obj.thiss()
+// objOne.thiss
 
 // function Construct() { // If we call without any refernces that will be global object
 
@@ -125,5 +134,7 @@
 // }
 
 // var result = new Construct();
-// var ss = result.add
+// var ss = result.add // Here i ma extract the funciton only not calling
 // console.log('result', ss())
+
+

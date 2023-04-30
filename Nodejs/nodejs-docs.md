@@ -1,3 +1,43 @@
+# reversed
+
+    var reversedName = "";
+    var name = 'Prakash';
+
+    for (let i = name.length - 1; i >= 0; i--) {
+        reversedName += name[i];
+    }
+
+    console.log('rest', reversedName)
+
+    var object = [
+        {place:"here", name:"stuff"},
+        {place:"there", name:"morestuff"},
+        {place:"there", name:"morestuff"}
+    ];
+
+    var uniqArray = object.filter(function (item, index) {
+        var toStrin = JSON.stringify(item);
+
+        // var result = object.findIndex(function (obj) {
+        //     return JSON.stringify(obj) === toStrin;
+        // });
+
+        return index === object.findIndex(function (obj) {
+            // console.log('index', JSON.stringify(obj) === toStrin)
+            return JSON.stringify(obj) === toStrin; // If return true return index positions only
+        });
+    });
+    console.log(uniqArray)
+
+
+    //     var removeDuplicate = indices.filter(function (item, index, input) {
+    //         return input.indexOf(item) === index;
+    //     });
+
+
+# const fruits = ["Banana", "Orange", "Apple", "Mango", "Kiwi"];
+fruits.splice(2, 2);
+
 # NodeJs Interview Questions zxczc
 
 # 1. Why NodeJs
@@ -9,7 +49,7 @@
 
 # 3. What is Event Loop
 
-    * The event loop allows Node. js to perform non-blocking I/O operations despite the fact that JavaScript is single-threaded. It is done by assigning operations to the operating system whenever and wherever possible
+    * The event loop allows Node.js to perform non-blocking I/O operations despite the fact that JavaScript is single-threaded. It is done by assigning operations to the operating system whenever and wherever possible
 
 # 4. what is Event Emitter in nodejs
 
@@ -159,3 +199,6 @@
         * Array
 
         * RegExp
+
+
+###  Node JS Processing model mainly based on Javascript Event based model with Javascript callback mechanism

@@ -223,3 +223,207 @@
     },
     "ok" : 1
 }
+
+
+
+
+### Without Index
+    db.sales.find({"quantity" : 1330}).explain('executionStats')
+    {
+        "explainVersion" : "1",
+        "queryPlanner" : {
+            "namespace" : "tasks.sales",
+            "indexFilterSet" : false,
+            "parsedQuery" : {
+                "quantity" : {
+                    "$eq" : 1330
+                }
+            },
+            "maxIndexedOrSolutionsReached" : false,
+            "maxIndexedAndSolutionsReached" : false,
+            "maxScansToExplodeReached" : false,
+            "winningPlan" : {
+                "stage" : "COLLSCAN",
+                "filter" : {
+                    "quantity" : {
+                        "$eq" : 1330
+                    }
+                },
+                "direction" : "forward"
+            },
+            "rejectedPlans" : [ ]
+        },
+        "executionStats" : {
+            "executionSuccess" : true,
+            "nReturned" : 1,
+            "executionTimeMillis" : 7,
+            "totalKeysExamined" : 0,
+            "totalDocsExamined" : 16037,
+            "executionStages" : {
+                "stage" : "COLLSCAN",
+                "filter" : {
+                    "quantity" : {
+                        "$eq" : 1330
+                    }
+                },
+                "nReturned" : 1,
+                "executionTimeMillisEstimate" : 0,
+                "works" : 16039,
+                "advanced" : 1,
+                "needTime" : 16037,
+                "needYield" : 0,
+                "saveState" : 16,
+                "restoreState" : 16,
+                "isEOF" : 1,
+                "direction" : "forward",
+                "docsExamined" : 16037
+            }
+        },
+        "command" : {
+            "find" : "sales",
+            "filter" : {
+                "quantity" : 1330
+            },
+            "$db" : "tasks"
+        },
+        "serverInfo" : {
+            "host" : "namlabs-ThinkPad-E14-Gen-4",
+            "port" : 27017,
+            "version" : "5.0.15",
+            "gitVersion" : "935639beed3d0c19c2551c93854b831107c0b118"
+        },
+        "serverParameters" : {
+            "internalQueryFacetBufferSizeBytes" : 104857600,
+            "internalQueryFacetMaxOutputDocSizeBytes" : 104857600,
+            "internalLookupStageIntermediateDocumentMaxSizeBytes" : 104857600,
+            "internalDocumentSourceGroupMaxMemoryBytes" : 104857600,
+            "internalQueryMaxBlockingSortMemoryUsageBytes" : 104857600,
+            "internalQueryProhibitBlockingMergeOnMongoS" : 0,
+            "internalQueryMaxAddToSetBytes" : 104857600,
+            "internalDocumentSourceSetWindowFieldsMaxMemoryBytes" : 104857600
+        },
+        "ok" : 1
+    }
+
+### With Index search
+
+    db.sales.find({"quantity" : 1330}).explain('executionStats')
+    {
+        "explainVersion" : "1",
+        "queryPlanner" : {
+            "namespace" : "tasks.sales",
+            "indexFilterSet" : false,
+            "parsedQuery" : {
+                "quantity" : {
+                    "$eq" : 1330
+                }
+            },
+            "maxIndexedOrSolutionsReached" : false,
+            "maxIndexedAndSolutionsReached" : false,
+            "maxScansToExplodeReached" : false,
+            "winningPlan" : {
+                "stage" : "FETCH",
+                "inputStage" : {
+                    "stage" : "IXSCAN",
+                    "keyPattern" : {
+                        "quantity" : 1
+                    },
+                    "indexName" : "quantity_1",
+                    "isMultiKey" : false,
+                    "multiKeyPaths" : {
+                        "quantity" : [ ]
+                    },
+                    "isUnique" : false,
+                    "isSparse" : false,
+                    "isPartial" : false,
+                    "indexVersion" : 2,
+                    "direction" : "forward",
+                    "indexBounds" : {
+                        "quantity" : [
+                            "[1330.0, 1330.0]"
+                        ]
+                    }
+                }
+            },
+            "rejectedPlans" : [ ]
+        },
+        "executionStats" : {
+            "executionSuccess" : true,
+            "nReturned" : 1,
+            "executionTimeMillis" : 2,
+            "totalKeysExamined" : 1,
+            "totalDocsExamined" : 1,
+            "executionStages" : {
+                "stage" : "FETCH",
+                "nReturned" : 1,
+                "executionTimeMillisEstimate" : 0,
+                "works" : 2,
+                "advanced" : 1,
+                "needTime" : 0,
+                "needYield" : 0,
+                "saveState" : 0,
+                "restoreState" : 0,
+                "isEOF" : 1,
+                "docsExamined" : 1,
+                "alreadyHasObj" : 0,
+                "inputStage" : {
+                    "stage" : "IXSCAN",
+                    "nReturned" : 1,
+                    "executionTimeMillisEstimate" : 0,
+                    "works" : 2,
+                    "advanced" : 1,
+                    "needTime" : 0,
+                    "needYield" : 0,
+                    "saveState" : 0,
+                    "restoreState" : 0,
+                    "isEOF" : 1,
+                    "keyPattern" : {
+                        "quantity" : 1
+                    },
+                    "indexName" : "quantity_1",
+                    "isMultiKey" : false,
+                    "multiKeyPaths" : {
+                        "quantity" : [ ]
+                    },
+                    "isUnique" : false,
+                    "isSparse" : false,
+                    "isPartial" : false,
+                    "indexVersion" : 2,
+                    "direction" : "forward",
+                    "indexBounds" : {
+                        "quantity" : [
+                            "[1330.0, 1330.0]"
+                        ]
+                    },
+                    "keysExamined" : 1,
+                    "seeks" : 1,
+                    "dupsTested" : 0,
+                    "dupsDropped" : 0
+                }
+            }
+        },
+        "command" : {
+            "find" : "sales",
+            "filter" : {
+                "quantity" : 1330
+            },
+            "$db" : "tasks"
+        },
+        "serverInfo" : {
+            "host" : "namlabs-ThinkPad-E14-Gen-4",
+            "port" : 27017,
+            "version" : "5.0.15",
+            "gitVersion" : "935639beed3d0c19c2551c93854b831107c0b118"
+        },
+        "serverParameters" : {
+            "internalQueryFacetBufferSizeBytes" : 104857600,
+            "internalQueryFacetMaxOutputDocSizeBytes" : 104857600,
+            "internalLookupStageIntermediateDocumentMaxSizeBytes" : 104857600,
+            "internalDocumentSourceGroupMaxMemoryBytes" : 104857600,
+            "internalQueryMaxBlockingSortMemoryUsageBytes" : 104857600,
+            "internalQueryProhibitBlockingMergeOnMongoS" : 0,
+            "internalQueryMaxAddToSetBytes" : 104857600,
+            "internalDocumentSourceSetWindowFieldsMaxMemoryBytes" : 104857600
+        },
+        "ok" : 1
+    }
