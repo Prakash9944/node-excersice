@@ -141,11 +141,11 @@ https://stackblitz.com/edit/angular-hrvf9t?file=src%2Fapp%2Fapp.component.css
 
    # Reactive Extensions for JavaScript), which is a library for reactive programming in JavaScript. Observables are used to handle asynchronous data streams and provide a way to represent and manipulate streams of data over time
 
-   # Observables in Angular are powerful tools for handling asynchronous data and managing
+   # Observable in Angular are powerful tools for handling asynchronous data and managing
 
-   #  Observable can emit multiple values over time. A Promise only resolves once
+   # Observable can emit multiple values over time. A Promise only resolves once
 
-   #  Observable are used to run asynchronously, and we get the return value multiple times. Promises are used to run asynchronously, and we get the return value only once.
+   # Observable are used to run asynchronously, and we get the return value multiple times. Promises are used to run asynchronously, and we get the return value only once.
 
    import { Observable } from 'rxjs';
 

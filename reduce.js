@@ -15,15 +15,15 @@
 // console.log('uniq', uniq)
 
 // reduce(callbackFn, initialValue)
-var array = [10, 20, 30, 40, 50, 60];
+// var array = [10, 20, 30, 40, 50, 60];
 
-var result = array.reduce(function(previousVal, currentVal) {
-    console.log('previousVal, currentVal', previousVal, currentVal)
+// var result = array.reduce(function(previousVal, currentVal) {
+//     console.log('previousVal, currentVal', previousVal, currentVal)
 
-    return previousVal + currentVal;
-});
+//     return previousVal + currentVal;
+// });
 
-console.log('array', result)
+// console.log('array', result)
 
 
 var shoppingCart = [{id: 1, item: "Milk", cost: 50}, {id: 2, item: "Bread", cost: 20}, {id: 2, item: "Orange", cost: 150}];

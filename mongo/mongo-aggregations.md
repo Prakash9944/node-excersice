@@ -282,6 +282,8 @@ db.survey.find(
 
         { $unwind: <arrayReferenceExpression> }
 
+        # $unwind. Deconstructs an array field from the input documents to output a document for each element.
+
         db.person.aggregate([{ $unwind: "$tags"}])
         { "_id" : ObjectId("614d975741d4e3f1cfa9ca8d"), "name" : "raj", "gender" : "male", "age" : 56, "tags" : "css" }
         { "_id" : ObjectId("614d975741d4e3f1cfa9ca8d"), "name" : "raj", "gender" : "male", "age" : 56, "tags" : "html" }
@@ -484,7 +486,6 @@ db.survey.find(
     { "_id" : { "age" : 95 } }
     { "_id" : { "age" : 59 } }
     { "_id" : { "age" : 56 } }
-
 ## db.person.aggregate([{$group: {_id: '$company.location.country'}}, {$sort: {_id: 1}}])
     { "_id" : null }
     { "_id" : "australia" }
@@ -492,7 +493,6 @@ db.survey.find(
     { "_id" : "london" }
     { "_id" : "paris" }
     { "_id" : "usa" }
-
 ## db.person.aggregate({$project: {_id: 0, name: '$name', gender: '$gender'}})
     { "name" : "prakash", "gender" : "male" }
     { "name" : "suganya", "gender" : "male" }
@@ -501,3 +501,30 @@ db.survey.find(
     { "name" : "prakash", "gender" : "male" }
     { "name" : "prakash", "gender" : "male" }
     { "name" : "prakash", "gender" : "male" }
+##
+> db.orders.aggregate([{$group: {_id: "$item", totalPrice: {$sum: "$quantity"}}}, {$match: {"_id" : "almonds"}}])
+    { "_id" : "almonds", "totalPrice" : 51 }
+> db.orders.aggregate([{$group: {_id: "$item", totalPrice: {$sum: "$quantity"}}}, {$match: {"totalPrice" : 51}}])
+    { "_id" : "almonds", "totalPrice" : 51 }
+> db.orders.aggregate([{$group: {_id: "$item", totalPrice: {$sum: "$quantity"}}}, {$match: {"totalPrice" : {$gt: 33}}}])
+    { "_id" : "almonds", "totalPrice" : 51 }
+    { "_id" : "tomato", "totalPrice" : 67 }
+## Element Match Operator
+
+    * db.complex.find({arrayOfValues: {$elemMatch: {$eq: "k"}}})
+        { "_id" : ObjectId("5407c76b7b1c276c74f90529"), "field" : "y", "arrayOfValues" : [ "k" ] }
+
+# arrayOfValues mean it's mongoDB document name
+
+    Example:-
+        { "_id" : ObjectId("5407c76b7b1c276c74f90524"), "field" : "x", "arrayOfValues" : [ "a", "b", "c" ] }
+        { "_id" : ObjectId("5407c76b7b1c276c74f90525"), "field" : "x", "arrayOfValues" : [ "b", "c" ] }
+        { "_id" : ObjectId("5407c76b7b1c276c74f90526"), "field" : "z", "arrayOfValues" : [ "a" ] }
+        { "_id" : ObjectId("5407c76b7b1c276c74f90527"), "field" : "x", "arrayOfValues" : [ "a", "c" ] }
+        { "_id" : ObjectId("5407c76b7b1c276c74f90528"), "field" : "z", "arrayOfValues" : [ "b" ] }
+        { "_id" : ObjectId("5407c76b7b1c276c74f90529"), "field" : "y", "arrayOfValues" : [ "k" ] }
+
+# ElementMatch in aggregation
+
+db.complex.aggregate([{$match: {arrayOfValues: {$elemMatch: {$eq: "k"}}}}])
+{ "_id" : ObjectId("5407c76b7b1c276c74f90529"), "field" : "y", "arrayOfValues" : [ "k" ] }

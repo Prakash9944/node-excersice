@@ -77,18 +77,19 @@ lookup
 
 
 
-// Create a for loop that iterates up to 100 while outputting "fizz" at multiples of 3, "buzz" at multiples of 5 and "fizzbuzz" at multiples of 3 and 5.
-
-for(let i= 0; i < 100; i++) {
-    console.log(i*5, '[5, 10, 15].indexOf(i*5) >= 0', [5, 10, 15].indexOf(i*5) >= 0)
-    let
-    if ([3, 6, 9].indexOf(i*3) >= 0) {
-      console.log(i,"  buzz")
-    } else if ([5, 10, 15].indexOf(i*5) >= 0) {
-        console.log(i, "  fizzbuzz")
-    }
+// Create a for loop that iterates up to 100 while outputting "fizz" at multiples of 3, "buzz" at multiples of 5 and "fizzbuzz" at multiples of 3 and for (let i = 1; i <= 100; i++) {
+  let output = "";
+  if (i % 3 === 0) {
+    output += "fizz";
+  }
+  if (i % 5 === 0) {
+    output += "buzz";
+  }
+  if (output === "") {
+    output = i.toString();
+  }
+  console.log(output);
 }
-
 
 # Mojin INterView
 

@@ -23,8 +23,7 @@
             return this.name
         },
         show_name: () => {
-            // console.log('this.name', object.name)
-            return object.name
+            return this.name
         }
     }
 
