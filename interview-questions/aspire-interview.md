@@ -35,12 +35,12 @@ class security implent intercept {
     }
 }
 
-Obserable(data) {
+Observable(data) {
     data.next();
     data.complete()
     data.error()
 }
-Obserable.subscribe((res) => {
+Observable.subscribe((res) => {
 
 });
 
@@ -64,20 +64,16 @@ pipe(map, error)
 9. what is canActive and routes and syntax
 10. can we product route in Angular how
 11. what is authguard
-12. what is itercepter
+12. what is interceptor
 13. what is pipe
 14. what is subscribe
 15. ng store
 16. explain ngIf and hidden
 
-
-
-nodemainler
 lookup
 
-
-
-// Create a for loop that iterates up to 100 while outputting "fizz" at multiples of 3, "buzz" at multiples of 5 and "fizzbuzz" at multiples of 3 and for (let i = 1; i <= 100; i++) {
+// Create a for loop that iterates up to 100 while outputting "fizz" at multiples of 3, "buzz" at multiples of 5 and "fizzbuzz" at multiples of 3 and
+for (let i = 1; i <= 100; i++) {
   let output = "";
   if (i % 3 === 0) {
     output += "fizz";
@@ -97,11 +93,11 @@ lookup
 
 2. what is mongodB
 
-3. req.query and req.path difference
+3. REQ.query and REQ.path difference
 
-4. what is obseavable and subscrie given the example
+4. what is observable and subscribe given the example
 
-5. How can you secure your node js application
+5. How can you secure your node JS application
 
 6. what is event loop
 

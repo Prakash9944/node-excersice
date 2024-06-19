@@ -12,22 +12,22 @@
 
 ## 6. what is lookup
 
-## 7. what is mongodb
+## 7. what is MongoDB
 
-## 8. how to create monogodb connection
+## 8. how to create MongoDB connection
 
 ## 9. what is mongoose
 
 ## 10. what is observable and promise in angular
 
-## 11. how to insert data to mongodb
+## 11. how to insert data to MongoDB
 
 ## 12. do you face any issue with your applications
 
 
 # Second Interview Questions(Aug 07 2021)
 
-# Interview Desc 17 2022(Interviewer Payal Shah)
+# Interview Dec 17 2022(Interviewer Payal Shah)
 
 1. what is nodejs
 
@@ -37,7 +37,7 @@
 
 4. what file read system nodejs
 
-5. what is ecmascript nodejs
+5. what is ECMAScript nodejs
 
 6. what is expressJs nodejs
 

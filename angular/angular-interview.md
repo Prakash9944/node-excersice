@@ -6,7 +6,7 @@
 
 ## What is NgModule
 
-* The set of components, directives, and pipes (declarables) that belong to this module.
+* The set of components, directives, and pipes (declarable) that belong to this module.
 
 * NgModule has imports and exports declaration and providers
 
@@ -181,7 +181,7 @@ https://stackblitz.com/edit/angular-hrvf9t?file=src%2Fapp%2Fapp.component.css
 
 ### Fork Join
 
-  # Angular for handling asynchronous operations. forkJoin is used to combine multiple observables into a single observable that emits an array of values from the combined observable, once all of them complete.
+  # Angular for handling asynchronous operations. forkJoin is used to combine multiple observable into a single observable that emits an array of values from the combined observable, once all of them complete.
 
   # Use forkJoin to combine the observables and subscribe to the resulting observable:
 

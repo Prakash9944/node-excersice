@@ -2,9 +2,9 @@
 
 # what is curring javascript
 
-# what is normal funciton differnce between arraow funciton
+# what is normal function difference between arrow funciton
 
-# how to improve the query performnce in mongodb index
+# how to improve the query performance in MongoDB index
 
 
     var person = {

@@ -4,9 +4,9 @@
 
 3. what is metadata in angular
 
-4. what is universel selector
+4. what is universal selector
 
-5. what is ul and ol tag
+5. what is UL and ol tag
 
 6. what is span tag
 
