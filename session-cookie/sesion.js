@@ -1,0 +1,1 @@
+1. If anything changes in to the session the cookie will modify

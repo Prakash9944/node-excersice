@@ -1,4 +1,4 @@
-// var test = new Promise(function (resolve, reject) {
+// var promises = new Promise(function (resolve, reject) {
 //     var result;
 //     setTimeout(function() {
 //         console.log('First')
@@ -13,43 +13,60 @@
 //         result = true;
 //         resolve(result)
 //     }, 1000)
-
-
+// })
+// promises.then(function(val) {
+//     console.log('Wait....', val)
 // })
 
+//  Promise chaining
+// var promiseChain = function () {
+//     var result =  new Promise((resolve)=> {
+//         return resolve(10);
+//     }).then((response) => {
+//         let total = response + 10
+//         return total + 10;
+//     }).then((response) => {
+//         let anotherTotal = response + 44;
+//         result = anotherTotal
+//         return anotherTotal
+//     })
 
-// test.then(function(val) {
-//     console.log('valy', val)
+//     console.log('Result!', result)
+//     return result;
+// }
+// promiseChain().then((response) => {
+//     console.log("Promise Chain", response)
 // })
 
-var test = function () {
+// var newPromise = new Promise((resolve, reject) => {
+//     return resolve (test)
+// }).then((result) => {
+//     console.log('newPromise', res())
+// })
 
-    var result =  new Promise((resolve)=> {
-        return resolve(10);
+// var promiseResult = new Promise(function (resolve, reject) {
+//     setTimeout(function(){
+//         if (3 == 4) {
+//             resolve(3)
+//         } else {
+//             reject('Error frim')
+//         }
+//     }, 5000)
+// });
 
-    }).then((response) => {
-        let total = response + 10
-        console.log('total', total)
-        return total + 10;
-    }).then((response) => {
-        let anotherTotal = response + 44;
-        console.log('anotherTotal', anotherTotal)
-        result = anotherTotal
-        return anotherTotal
-    })
+// promiseResult.then((result)=> {
+//     console.log("result", result)
+// }).catch((err)=> {
+//     console.error('Error', err)
+// })
 
-    console.log('resultresult', result)
-
-    // return {};
-}
-test()
-// var aa = test()
-// console.log("aa", test() )
-
-
-var ss = new Promise((resolve, reject) => {
-    // console.log("test", test)
-    return resolve (test)
-}).then((res) => {
-    // console.log('ssss', res())
-})
+// new Promise((resolve, reject) => {
+//     var result = fetch("http://example.com/movies.json");
+//     if (result) {
+//         return resolve(result)
+//     } else {
+//         reject(new Error("Invalid api call"))
+//     }
+// }).then((result) => {
+//     console.log('result', result)
+// })

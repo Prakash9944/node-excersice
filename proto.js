@@ -1,12 +1,12 @@
-// // var User = function (firstName, courseCount) {
+var User = function (firstName, courseCount) {
 
-// //     this.courseCount = courseCount;
-// //     this.firstName =  firstName;
+    this.courseCount = courseCount;
+    this.firstName =  firstName;
 
-// //     this.getCourseCount = function () {
-// //         console.log(`Get your course count ${this.courseCount}`)
-// //     }
-// // }
+    this.getCourseCount = function () {
+        console.log(`Get your course count ${this.courseCount}`)
+    }
+}
 
 
 // // User.prototype.getSome = function() {
@@ -58,3 +58,38 @@
 // pe.getName()
 
 // console.log(pe  instanceof Employee)
+
+// Prototype mean inherit parent object to child using __proto__
+
+let user = {
+    name: "Prakash",
+    pageAccess: ["login", "dashboard", "contact"],
+    set setName(value) {
+        this.name =value
+    },
+    get getName() {
+        return this.name
+    }
+}
+
+let admin = {
+    isAdmin: true,
+    __proto__: user
+}
+console.log('user', user)
+// "user"
+// [object Object] {
+//   getName: "Prakash",
+//   name: "Prakash",
+//   pageAccess: ["login", "dashboard", "contact"],
+//   setName: undefined
+// }
+
+console.log('admin', admin)
+// [object Object] {
+//   getName: "Prakash",
+//   isAdmin: true,
+//   name: "Prakash",
+//   pageAccess: ["login", "dashboard", "contact"],
+//   setName: undefined
+// }

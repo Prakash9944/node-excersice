@@ -18,7 +18,7 @@
 
 ## 9. what is mongoose
 
-## 10. what is obserable and promise in angular
+## 10. what is observable and promise in angular
 
 ## 11. how to insert data to mongodb
 
@@ -27,4 +27,17 @@
 
 # Second Interview Questions(Aug 07 2021)
 
+# Interview Desc 17 2022(Interviewer Payal Shah)
+
+1. what is nodejs
+
+2. what is events nodejs
+
+3. what is module nodejs
+
+4. what file read system nodejs
+
+5. what is ecmascript nodejs
+
+6. what is expressJs nodejs
 

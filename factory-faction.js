@@ -43,34 +43,34 @@
 // console.log(Object)
 
 
-var usages = {
-    '1234': {
-        name: 'Prakash',
-        age: 23,
-        address: 'checnnai'
-    },
-    '1235': {
-        name: 'Prakash',
-        age: 23,
-        address: 'checnnai'
-    },
-    '1236': {
-        name: 'Prakash',
-        age: 23,
-        address: 'checnnai'
-    },
-    '1237': {
-        name: 'Prakash',
-        age: 23,
-        address: 'checnnai'
-    },
-    '1238': {
-        name: 'Prakash',
-        age: 23,
-        address: 'checnnai'
-    }
-}
+// var usages = {
+//     '1234': {
+//         name: 'Prakash',
+//         age: 23,
+//         address: 'checnnai'
+//     },
+//     '1235': {
+//         name: 'Prakash',
+//         age: 23,
+//         address: 'checnnai'
+//     },
+//     '1236': {
+//         name: 'Prakash',
+//         age: 23,
+//         address: 'checnnai'
+//     },
+//     '1237': {
+//         name: 'Prakash',
+//         age: 23,
+//         address: 'checnnai'
+//     },
+//     '1238': {
+//         name: 'Prakash',
+//         age: 23,
+//         address: 'checnnai'
+//     }
+// }
 
-usages['1238'].accounts = usages['1239'] || {};
+// usages['1238'].accounts = usages['1239'] || {};
 
-console.log('usages', usages)
+// console.log('usages', usages)

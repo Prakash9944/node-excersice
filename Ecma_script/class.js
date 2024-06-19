@@ -11,7 +11,7 @@ class VechileContainer  {
     }
 
     getPrint() {
-        console.log(this.name + this.age + this.address)
+        console.log('asdadadssad', this.name)
         return this.name + this.age + this.address;
     }
 
@@ -21,17 +21,17 @@ class VechileContainer  {
 }
 
 var vechicle = new VechileContainer('Prakash', '26', 'asdas');
-console.log('vechicle.getPrint()', vechicle.name)
+console.log('vechicle.getPrint()', vechicle.getPrint())
 
 
-class car extends VechileContainer {
-    price = "";
+// class car extends VechileContainer {
+//     price = "";
 
-    Constructor(name, age, address, price) {
-        super();
-    }
+//     Constructor(name, age, address, price) {
+//         super();
+//     }
 
-    getArray ()
-}
+//     getArray ()
+// }
 
-var car = new Car('data', 'sd', 'sd', '123');
+// var car = new Car('data', 'sd', 'sd', '123');
