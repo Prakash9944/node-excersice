@@ -1,34 +1,27 @@
-//  Multiply
+/* Multiply*/
 function multiplyAll(arr) {
-  let product = 1;
-  // Only change code below this line
-//   console.log(arr.length);
-  for (let i = 0; i < arr.length; i++) {
-    for (let j = 0; j < arr[i].length; j++) {
-      console.log(arr[i][j]);
-      console.log( product *= arr[i][j])
+    var product = 1;
+
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = 0; j < arr[i].length; j++) {
+            console.log(arr[i][j]);
+            console.log(product *= arr[i][j]);
+        }
     }
-  }
-  // Only change code above this line
-  return product;
+
+    return product;
 }
+console.log("Multiply", multiplyAll([[1,2],[3,4],[5,6,7]]))
 
-multiplyAll([[1,2],[3,4],[5,6,7]]);
-
-
-// console.log([[1,2],[3,4],[5,6,7]].length);
-
-// ===============
-
+/*================*/
 for(let i = 0; i <= 5; i+=1) {
     console.log(i)
 }
+
 for(initialization; condition; lastExpression) {
     // code
 }
-
-
-// ==============
+/*==============*/
 
 let found = false
 let target = 13
@@ -50,43 +43,37 @@ for (let number of numbers) {
     console.log("Odd number " + number)
 }
 
-
-
 const names = ["Alice", "Bob", "Charlie"]
-
 for(let i = 0; i < names.length; i += 1)
     console.log(names[i])
 
-
-
-
-// ===================================
+/*===================================*/
 
 const numbers = [1, 2, 3]
 
-// For Loop
+/*For Loop*/
 for(let i = 0; i < numbers.length; i++) {
     console.log(numbers[i])
 }
 
-// For-of Loop
+/*For-of Loop*/
 for (let number of numbers) {
     console.log(number)
 }
 
-// While Loop
+/*While Loop*/
 let j = 0
 while(j < numbers.length) {
     console.log(numbers[j])
     j++
 }
 
-// Do-while Loop
+/*Do-while Loop*/
 let k = 0
 do {
     console.log(numbers[k])
     k++
 } while (k < numbers.length)
 
-// Array.forEach Loop
+/*Array.forEach Loop*/
 numbers.forEach((number) => console.log(number))
