@@ -30,6 +30,6 @@ var shoppingCart = [{id: 1, item: "Milk", cost: 50}, {id: 2, item: "Bread", cost
 
 var totalResult = shoppingCart.reduce(function(accumalator, currentVal) {
     return accumalator + currentVal.cost
-}, 0);
+}, 100);
 
 console.log('totalResult', totalResult)

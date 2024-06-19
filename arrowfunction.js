@@ -1,32 +1,54 @@
+// https://www.youtube.com/watch?v=ONdoSoFDvXI
 
-// console.log(x());  // Arrow fucntion not hoisting concept
+
+// const obj = {
+//     simple() {
+//         return this
+//     }
+// }
+
+// let a = obj.simple
+// console.log(obj.simple() === global)
+// console.log(a(), global)
+
+// console.log(x) //  var keyword declaration are hosted initialization not
+// var x = 100
+
+// console.log(x) //  const keyword not hosted
+// const x = 100
+
+// console.log(x());  // Arrow fucntion not hoisting concept because arrow function are not hosted
 // var x = () => {
 //     return 100;
 // }
+
+// 1. Arrow fucntion not hoisted
+// 2. this in arrow function is binded to the parent
+
 
 // host(100)
 // function host (number) {
 //     console.log("number is ", number)
 // }
 
+// const obj = {
+//     name: "Prakash",
+//     someMethod: () => {
+//         return this;
+//     }
+// }
 
-const obj = {
-    name: "prads",
-    someMethod: () => {
-        return this;
-    }
-}
 // var a = obj.someMethod();
-// console.log("asdas", a); // in arrow function this keyword binded(refer) to parant object
-// console.log("obj.someMethod", obj.someMethod());
+// console.log(this)
+// console.log("A value is empty object", a); // in arrow function this keyword binded(refer) to parant object
+// console.log("Object.someMethod also got empty object", obj.someMethod());
 
-
-function myFucntion() {
-    var name = 10;
-    return () => {
-        return this.name;
-    }
-}
+// function myFucntion() {
+//     var name = 10;
+//     return () => {
+//         return this.name;
+//     }
+// }
 
 // const myObj =  new myFucntion();
 // console.log(myObj)
@@ -53,8 +75,8 @@ function myFucntion() {
 //             console.log("fuel is", fuels)
 //         }, 1000);
 //     }
-
 // }
+
 // const benz  = new myCar();
 // console.log(benz.reFuel())
 
@@ -127,66 +149,80 @@ function myFucntion() {
 // https://www.youtube.com/watch?v=dWZIPIc3szg Link
 
 // console.log(this)
-var age  = 27;
-function displayAge() {
-    console.log(age)
-    console.log(this)
-}
+// var age  = 27;
+// function displayAge() {
+//     console.log(age)
+//     console.log(this)
+// }
 
-// displayAge(); // Whenever javascript excute the function internally window object added window.displayAge() this rerfer to the window object
+// // displayAge(); // Whenever javascript excute the function internally window object added window.displayAge() this rerfer to the window object
 
-var person = {
-    age: 38,
-    displayAge: displayAge,
-    nestedPerson: {
-        age: 40,
-        displayAge: displayAge
-    }
-}
-// In javascript value of this keyword determined by how a function is called (runtime binding)
+// var person = {
+//     age: 38,
+//     displayAge: displayAge,
+//     nestedPerson: {
+//         age: 40,
+//         displayAge: displayAge
+//     }
+// }
+// // In javascript value of this keyword determined by how a function is called (runtime binding)
 // person.displayAge() // This keyword refer to the object that is currently calling function output 38
 // person.nestedPerson.displayAge() // This keyword refer to the object that is currently calling function output 40
 
 
-//  THis is Normal function example
-var personOne = {
-    age: 25,
-    greate1: function () {
-        console.log("great 1", this.age);
-        console.log("great 1", this)
+// //  THis is Normal function example
+// var personOne = {
+//     age: 25,
+//     greate1: function () {
+//         console.log("great 1", this.age);
+//         console.log("great 1", this)
 
-        function greate2() {
-            console.log("great 2", this.age);
-            console.log("great 2", this)
-        }
+//         function greate2() {
+//             console.log("great 2", this.age);
+//             console.log("great 2", this)
+//         }
 
-        greate2() // This is called without context which mean directly called
-    }
-}
+//         greate2() // This is called without context which mean directly called
+//     }
+// }
 
-// personOne.greate1() // THis is calling reference of personOne object
+// // personOne.greate1() // THis is calling reference of personOne object
 
-//  THis is Arrow function example  Basically arrow function does not have this keyword if you arrow function where you defined example inside object or not
-var personOne = {
-    age: 25,
-    greate1: function () {
-        console.log("great 1", this.age);
-        console.log("great 1", this)
+// //  THis is Arrow function example  Basically arrow function does not have this keyword if you arrow function where you defined example inside object or not
+// var personOne = {
+//     age: 25,
+//     greate1: function () {
+//         console.log("great 1", this.age);
+//         console.log("great 1", this)
 
-        const greate2 = () => {
-            console.log("great 2", this.age);
-            console.log("great 2", this)
-        }
+//         const greate2 = () => {
+//             console.log("great 2", this.age);
+//             console.log("great 2", this)
+//         }
 
-        greate2() // This is called without context which mean directly called
-    }
-}
+//         greate2() // This is called without context which mean directly called
+//     }
+// }
 
-// personOne.greate1() // THis is calling reference of personOne object
+// // personOne.greate1() // THis is calling reference of personOne object
 
-var age = 444;
-const greate2 = () => {
-    console.log("great 2", this.age);
-    console.log("great 2", this)
-}
-greate2()
+// var age = 444;
+// const greate2 = () => {
+//     console.log("great 2", this.age);
+//     console.log("great 2", this)
+// }
+// greate2()
+
+
+// const obj = {
+//     name: "Prakash",
+//     methodOne: () => {
+//         return this;
+//     },
+//     methodTwo: function () {
+//         return this.name;
+//     }
+// }
+
+// console.log('123', obj.methodOne())
+// console.log('1234', obj.methodTwo())

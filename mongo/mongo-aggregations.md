@@ -93,14 +93,14 @@ db.survey.find(
 
 
             db.person.insert([{ "_id" : ObjectId("614d6fd341d4e3f1cfa9c9da"), "name" : "prakash", "gender" : "male", "age" : 55 },
-                                    { "_id" : ObjectId("614d6fda41d4e3f1cfa9c9ec"), "name" : "prakash", "gender" : "male", "age" : 55 },
-                                    { "_id" : ObjectId("614d6fdb41d4e3f1cfa9c9fe"), "name" : "prakash", "gender" : "male", "age" : 55 },
-                                    { "_id" : ObjectId("614d6fdb41d4e3f1cfa9ca10"), "name" : "prakash", "gender" : "male", "age" : 55 },
-                                    { "_id" : ObjectId("614d6fdc41d4e3f1cfa9ca22"), "name" : "prakash", "gender" : "male", "age" : 55 },
-                                    { "_id" : ObjectId("614d6fdc41d4e3f1cfa9ca34"), "name" : "prakash", "gender" : "male", "age" : 55 },
-                                    { "_id" : ObjectId("614d6fdd41d4e3f1cfa9ca46"), "name" : "prakash", "gender" : "male", "age" : 55 },
-                                    { "_id" : ObjectId("614d6fdd41d4e3f1cfa9ca58"), "name" : "prakash", "gender" : "male", "age" : 55 },
-                                    { "_id" : ObjectId("614d6fde41d4e3f1cfa9ca6a"), "name" : "prakash", "gender" : "male", "age" : 55 },
+                                    { "_id" : ObjectId("614d6fda41d4e3f1cfa9c9ec"), "name" : "prakash", "gender" : "male", "age" : 5 },
+                                    { "_id" : ObjectId("614d6fdb41d4e3f1cfa9c9fe"), "name" : "prakash", "gender" : "male", "age" : 15 },
+                                    { "_id" : ObjectId("614d6fdb41d4e3f1cfa9ca10"), "name" : "prakash", "gender" : "male", "age" : 25 },
+                                    { "_id" : ObjectId("614d6fdc41d4e3f1cfa9ca22"), "name" : "prakash", "gender" : "male", "age" : 35 },
+                                    { "_id" : ObjectId("614d6fdc41d4e3f1cfa9ca34"), "name" : "prakash", "gender" : "male", "age" : 45 },
+                                    { "_id" : ObjectId("614d6fdd41d4e3f1cfa9ca46"), "name" : "prakash", "gender" : "male", "age" : 51 },
+                                    { "_id" : ObjectId("614d6fdd41d4e3f1cfa9ca58"), "name" : "prakash", "gender" : "male", "age" : 51 },
+                                    { "_id" : ObjectId("614d6fde41d4e3f1cfa9ca6a"), "name" : "prakash", "gender" : "male", "age" : 35 },
                                     { "_id" : ObjectId("614d6ff241d4e3f1cfa9ca7c"), "name" : "prakash", "gender" : "male", "age" : 55 }])
 
 
@@ -216,7 +216,7 @@ db.survey.find(
 
     1. $match and $Group and $count
 
-        db.person.aggregate([ {$match: {age: {$gt: 25}} },{ $group: {_id: 'age'}}, {$count: 'nameCount'}])
+        db.person.aggregate([ {$match: {age: {$gt: 25}} },{ $group: {_id: '$age'}}, {$count: 'nameCount'}])
         { "nameCount" : 3 }
 
 ### $Sort
@@ -255,6 +255,21 @@ db.survey.find(
 
        db.person.aggregate([ { $match: {age: {$gt: 24 }}}, {$group: {_id: '$gender', count: {$sum: 1}}}])
 
+       db.people.aggregate([{$project: {price: 1}}, {$count: "price"}])
+
+        { "price" : 7568 }
+
+    2. Project field can create new field object eg: if you have 10 input we get 11 using project
+
+        db.people.aggregate([{$project: { people: 1, info: {price: "$price", "quantity": "$quantity" }}}])
+
+        { "_id" : ObjectId("66583dd2793de670314806a4"), "people" : "Nick", "info" : { "price" : 10, "quantity" : 2 } }
+
+        db.people.aggregate([{$project: { people: 1, info: {price: "price", "quantity": "quantity" }}}]
+
+        { "_id" : ObjectId("66583dd2793de670314806a4"), "people" : "Nick", "info" : { "price" : "price", "quantity" : "quantity" } }
+
+
 ### $limit stage
 
     1. { $limit : <number> }
@@ -266,6 +281,12 @@ db.survey.find(
         { "_id" : "mala" }
         { "_id" : "prakash" }
         { "_id" : "suganya" }
+
+        db.people.aggregate([{$limit: 10 }, {$match: {price: {$gt: 4}}}, {$group: {_id : "$people"}}])
+        { "_id" : "Nick" }
+        { "_id" : "Prakash" }
+        { "_id" : "Raj" }
+        { "_id" : "Jhon" }
 
         db.person.aggregate([{$group: {_id: "$tags"}}]) // If u want group by value of an array use unwind function in mongoDB
         { "_id" : [ "jenkins", "java", "bootstrap" ] }
@@ -309,6 +330,12 @@ db.survey.find(
 
         db.person.aggregate([{ $unwind: "$tags"}, {$group : {_id: '$tags'}}, {$count: 'tages'}])
         { "tages" : 12 }
+
+        db.array.aggregate([{$unwind: "$tages"}, {$group: {_id: "$tages", totalEntry: {$sum: 1}}}])
+        { "_id" : "Nathon", "totalEntry" : 9 }
+        { "_id" : "Jhon", "totalEntry" : 9 }
+        { "_id" : "Raj", "totalEntry" : 6 }
+        { "_id" : "Prkash", "totalEntry" : 6 }
 
 ### Accumulators are special operators inside the aggregation
 
@@ -364,6 +391,13 @@ db.survey.find(
         { "_id" : "java", "count" : 1 }
         { "_id" : "php", "count" : 60 }
 
+    2. db.array.aggregate([{$unwind: "$tages"}, {$group: {_id: "$tages", totalEntry: {$sum: 1}}}])
+
+        { "_id" : "Nathon", "totalEntry" : 9 }
+        { "_id" : "Jhon", "totalEntry" : 9 }
+        { "_id" : "Raj", "totalEntry" : 6 }
+        { "_id" : "Prkash", "totalEntry" : 6 }
+
 ### $avg accumulator
 
     1. calculate the average value of the certain values in the documents
@@ -378,6 +412,12 @@ db.survey.find(
     { "_id" : "mala", "avg" : 25 }
     { "_id" : "raj", "avg" : 56 }
 
+    db.inventory.aggregate([{$group: {_id: "$item", avgs: {$avg: "$quantity"}}}])
+    { "_id" : "Maps", "avgs" : null }
+    { "_id" : "Erasers", "avgs" : 15 }
+    { "_id" : "Books", "avgs" : 5 }
+    { "_id" : null, "avgs" : null }
+    { "_id" : "Pens", "avgs" : 350 }
 
 ### Unary Operators
 

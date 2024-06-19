@@ -74,3 +74,22 @@
         }
     ]
 }
+
+
+
+request.get('https://app.test.banking:9098/getAllCustomers', function(err, respones, body) {
+
+})
+
+var obj = {
+    url: "https://app.test.banking:9098/getAllCustomers",
+    method: 'get'
+};
+
+request(obj, function(err, respones, body) {
+
+});
+
+employee
+privilleg
+categroy

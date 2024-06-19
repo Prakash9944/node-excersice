@@ -18,11 +18,6 @@
 // console.log('data', data)
 
 
-
-
-
-
-
 // 1) Find the next palindrome number. If I pass any integer value to function it should return the next palindrome number.
 // For example:
 // If I pass 105 - it should return 111

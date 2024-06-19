@@ -2,11 +2,13 @@
 
  # Index improve mongoDB query execution
 
- # Without index whole collection must be scanned
+ # Without index whole collection must be scanned(COLLSCAN)
 
  # Index stores sorted fields values
 
  # If index use MongoDB perform only index scan
+
+ # Indexes are mostly to uses query we can create index
 
 
 ### Default index in each MongoDB collections
@@ -24,7 +26,7 @@
 
         db.persons.createIndex({ age: 1 })
 
-        db.persons.createIndex({ name: 1 })
+        db.persons.createIndex({ name: 1 }, {unique: true})
 
 
      db.getCollection('orders').getIndexes()

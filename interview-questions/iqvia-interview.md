@@ -12,7 +12,8 @@ var x  = 10;
 var y = x++;
 var z = ++x;
 
-console.log(x, y, z)
+console.log(x, y, z) 12 10 12
+
 
 ## Update document greater than age 40
 db.collection.update({age: {$gt: 40}}, {$set: {isactive: true}}, {multi: true});

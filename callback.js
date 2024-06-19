@@ -8,15 +8,15 @@ function second(callback) {
 }
 
 
-// second(first);
+second(first);
 
-function callbackFunction() {
-    console.log('callback function executed')
-}
+// function callbackFunction() {
+//     console.log('callback function executed')
+// }
 
-function mainFunction() {
-    console.log('Main function executed');
-    callbackFunction()
-}
+// function mainFunction() {
+//     console.log('Main function executed');
+//     callbackFunction()
+// }
 
-mainFunction(callbackFunction);
+// mainFunction(callbackFunction);

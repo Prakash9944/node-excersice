@@ -1,24 +1,27 @@
+// https://www.youtube.com/watch?v=YCo16EjQkpA&t=212s
+// https://www.youtube.com/watch?v=-P0kKSxalLI
+
 // call apply bind this three function part of JavaScript Function proto_type
 // call(thisArg, arg1, /* …, */ argN)
 // apply(thisArg, argsArray)
 // bind(thisArg, arg1, arg2, /* …, */ argN)
 
-var age  = 27;
-function displayAge() {
-    console.log(age)
-    console.log(this)
-}
+// var age  = 27;
+// function displayAge() {
+//     console.log(age)
+//     console.log(this)
+// }
 
-// displayAge()
+// // displayAge()
 // displayAge.call() // Call method internally called when Js function executed  here call method refer to the window object
 
 
 // var employee = {
-//     name: "prakash",
+//     name: "Prakash",
 //     salary: 50000,
 //     calSalrywithBonus: function () {
 //         // console.log(this) // This time called JS call function that's why we got windowObjct
-//         this.salary = this.salary +5000;
+//         this.salary = this.salary + 5000;
 //         console.log(`${this.name} Salry after bonuse is ${this.salary}`)
 //     }
 // }
@@ -52,9 +55,9 @@ function displayAge() {
 //     salary: 40000
 // }
 
-// // calSalrywithBonus.call(employee, 5000) //  Whenever call function with a given context or this and pass arguments to one by one we can use call()
-// // calSalrywithBonus.call(employee2, 5000) //  Whenever call function with a given context or this and pass arguments to one by one we can use call()
-// // calSalrywithBonus.apply(employee2, [6000]) //  Whenever call function with a given context or this and pass arguments to array we can use apply()
+// calSalrywithBonus.call(employee, 5000) //  Whenever call function with a given context or this and pass arguments to one by one we can use call()
+// calSalrywithBonus.call(employee2, 5000) //  Whenever call function with a given context or this and pass arguments to one by one we can use call()
+// calSalrywithBonus.apply(employee2, [6000]) //  Whenever call function with a given context or this and pass arguments to array we can use apply()
 
 // var bindMeth = calSalrywithBonus.bind(employee2) //  Bind always given the functions we can bind the context of the arguments
 // console.log('bindMeth', bindMeth(234)) // Call bind aplay always except this keyword refercens
@@ -67,55 +70,56 @@ function displayAge() {
 // # Each function have context which mean this keyword
 // # If you want change that context of the(Mean this keyword) function we need use apply call or bind method
 
-function myFun(a, b, c, d) {
-    console.log(this, a, b, c, d) // This print the result var obj = { name: "Prakash" }
-}
+// function myFun(a, b, c, d) {
+//     console.log(this, a, b, c, d) // This print the result var obj = { name: "Prakash" }
+// }
 
-var obj = {
-    name: "Prakash"
-}
+// var obj = {
+//     name: "Prakash"
+// }
 
 // myFun = myFun.bind(obj);
 // myFun()
 
-// // # Call
+ // # Call
 // myFun.call(obj, 50, 60); // Here we can pass an argument by comma seprated value call me comma seprate
 
-// # Apply
-myFun.apply(obj, [50, 60, 90, 88, 99]); // Here we can pass an argument array value apply mean array
+// // # Apply
+// myFun.apply(obj, [50, 60, 90, 88, 99]); // Here we can pass an argument array value apply mean array
 
 
-const person = {
-  fullName: function() {
-    return this.firstName + " " + this.lastName;
-  }
-}
-const person1 = {
-  firstName:"John",
-  lastName: "Doe"
-}
-const person2 = {
-  firstName:"Mary",
-  lastName: "Doe"
-}
+// const person = {
+//   fullName: function() {
+//     return this.firstName + " " + this.lastName;
+//   }
+// }
+// const person1 = {
+//   firstName:"John",
+//   lastName: "Doe"
+// }
+// const person2 = {
+//   firstName:"Mary",
+//   lastName: "Doe"
+// }
 
-// This will return "John Doe":
-person.fullName.call(person1);
+// // This will return "John Doe":
+// var logs = person.fullName.call(person1);
+// console.log("Print person object", logs)
 
+// const person = {
+//   fullName: function() {
+//     return this.firstName + " " + this.lastName;
+//   }
+// }
+// const person1 = {
+//   firstName:"John",
+//   lastName: "Doe"
+// }
+// const person2 = {
+//   firstName:"Mary",
+//   lastName: "Doe"
+// }
 
-const person = {
-  fullName: function() {
-    return this.firstName + " " + this.lastName;
-  }
-}
-const person1 = {
-  firstName:"John",
-  lastName: "Doe"
-}
-const person2 = {
-  firstName:"Mary",
-  lastName: "Doe"
-}
-
-// This will return "Mary Doe"
-person.fullName.call(person2);
+// // This will return "Mary Doe"
+// var logs2 = person.fullName.call(person2);
+// console.log("Print person object2", logs2)

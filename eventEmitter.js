@@ -1,23 +1,23 @@
 
 // get the reference of EventEmitter class of events module
-const event = require('events');
+var event = require('events');
 
 //create an object of EventEmitter class by using above reference
-const eventEmitter = new event();
+var eventEmitter = new event();
 
-// eventEmitter.on('prakashraj', function () {
-//     console.log("1 the event fired")
-// })
+eventEmitter.on('prakashraj', function (int) {
+    console.log("1 the event fired")
+})
 
-// eventEmitter.on('prakashraj', function () {
-//     console.log("2 the event fired")
-// })
+eventEmitter.on('prakashraj', function (int) {
+    console.log("2 the event fired", int)
+})
 
-// eventEmitter.on('prakashraj', function (data) {
-//     console.log("3 the event fired", data)
-// })
+eventEmitter.on('prakashraj', function (int) {
+    console.log("3 the event fired", int)
+})
 
-// eventEmitter.emit('prakashraj');
+eventEmitter.emit('prakashraj', 5);
 
 
 // Subscribe for FirstEvent

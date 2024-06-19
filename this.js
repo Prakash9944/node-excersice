@@ -1,4 +1,5 @@
 // Video Link https://www.youtube.com/watch?v=ZHNe8gqqCAg&t=13s
+// https://www.youtube.com/watch?v=tWDtAXhcAac
 
 // const anotherObject = {
 //     myFunction4 () {
@@ -24,7 +25,7 @@
 // const test1 = obj.myFunction;
 // console.log("test1", test1)
 
-// test1(); // first myfunction extract from object assing test1 variable if the  function invoked directly refer to the global object and it is gives  global object
+// test1(); // first myfunction extract from object assing test1 variable if the function invoked directly refer to the global object and it is gives  global object
 
 // obj.myFunction(); // if the function invoked using obj.myfunction it is gives owner object
 
@@ -35,7 +36,7 @@
 //     return this
 // }
 
-// var result = myFucntion2(); // in this time myFunction called directly so its return  to the global object
+// var result = myFucntion2(); // in this time myFunction called directly so its return to the global object
 // console.log(result)
 
 // function myFucntion2 () {
@@ -43,7 +44,6 @@
 // }
 
 // const myOwn = new myFucntion2(); // myFucntion2(); // in this time myFunction called new keyword and object created this keyword pointing to new object
-
 
 // const obj =  {
 //     simple() {
@@ -71,26 +71,26 @@
 // }
 
 // channel.share = function () {
-//     console.log('this', this)
+//     console.log('Share', this)
 // }
 
 // var global = channel.share;
-// // console.log(global())
+// console.log(global())
 // console.log(channel.share())
 
 // const channel1 = {
 //     tittle: "CyberDude",
 //     video_tittle: "javascript",
-//     language: ["tamil", "english", "malayalam"],
+//     language: ["tamil", "english", "Malayalam"],
 //     subscribe() {
-//         console.log("this", this);
+//         console.log("subscribe", this);
 //     },
 
 //     showVideos() {
 //         this.language.forEach((lang) => {
-//             console.log(this)
-//             console.log(this.video_tittle, lang);
-//         });
+//             console.log("showVideos", this)
+//             console.log("this.video_tittle", this.video_tittle, lang);
+//         }, this);
 //     }
 // }
 
@@ -101,7 +101,8 @@
 
 // playVideo.call({name: "prakashraj"});
 
-// var dara = channel1.showVideos()
+var callShowVideoFun = channel1.showVideos()
+console.log("callShowVideoFun", callShowVideoFun);
 
 // function Share(channel_tittle) {
 //     this.channel_tittle = channel_tittle;
@@ -138,3 +139,14 @@
 // console.log('result', ss())
 
 
+// const printNumbers = {
+//   phrase: 'The current value is:',
+//   numbers: [1, 2, 3, 4],
+//   loop() {
+//     this.numbers.forEach(function (number) {
+//       console.log(this, number)
+//     })
+//   },
+// }
+
+// printNumbers.loop()

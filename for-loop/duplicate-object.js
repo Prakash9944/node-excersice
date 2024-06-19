@@ -1,13 +1,32 @@
-const a = [
-    {label: 'All', value: 'All'},
-    {label: 'All', value: 'All'},
-    {label: 'Alex', value: 'Ninja'},
-    {label: 'Alex', value: 'Ninja'},
-    {label: 'Alex', value: 'Ninja'}
+const countries = [
+    {
+        country: 'India', state: 'Chennai'
+    },
+    {
+        country: 'USA', state: 'New York'
+    },
+    {
+        country: 'USA', state: 'Alaska'
+    },
+    {
+        country: 'Japan', state: 'Hiroshima'
+    },
+    {
+        country: 'USA', state: 'Alaska'
+    },
 ]
 
-for (let i = 0; i < a.length; ++i)
-    for (let j = 0; j < a.length; ++j)
-        if (i !== j && a[i].label === a[j].label && a[i].value === a[j].value)
-            a.splice(j, 1);
-console.log(a);
+var removedDuplicate = countries.filter((item, index) => {
+    // console.log('Item', item, index)
+    var toString = JSON.stringify(item);
+
+    var isSameIndex = countries.findIndex((country) => {
+        // console.log("Matched string", JSON.stringify(country) === toString)
+        return JSON.stringify(country) === toString
+    })
+
+    return index === isSameIndex;
+});
+
+console.log("Removed duplicate object...", removedDuplicate)
+
