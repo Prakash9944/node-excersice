@@ -231,3 +231,15 @@ https://stackblitz.com/edit/angular-hrvf9t?file=src%2Fapp%2Fapp.component.css
 ### Output Decorator
 
     1 Output decorator pass value to child to parent and @output decorator placed on the parent component
+
+### NgOnchages
+
+    ngOnChanges is called when the input properties of a component or directive change. These changes occur when Angular sets or resets data-bound input properties. This lifecycle hook is particularly useful when a component needs to act on changes to its input properties.
+
+## Host Binding vs Host Listener
+
+    # HostBinding and HostListener are decorators in Angular that allow you to interact with the host element of a directive or component.
+
+    # HostBinding is used to set properties on the host element,
+
+    # HostListener is used to listen for events on the host element.

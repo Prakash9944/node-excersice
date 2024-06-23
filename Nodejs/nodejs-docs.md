@@ -1,47 +1,11 @@
-# reversed
-
-    var reversedName = "";
-    var name = 'Prakash';
-
-    for (let i = name.length - 1; i >= 0; i--) {
-        reversedName += name[i];
-    }
-
-    console.log('rest', reversedName)
-
-    var object = [
-        {place:"here", name:"stuff"},
-        {place:"there", name:"morestuff"},
-        {place:"there", name:"morestuff"}
-    ];
-
-    var uniqArray = object.filter(function (item, index) {
-        var toStrin = JSON.stringify(item);
-
-        // var result = object.findIndex(function (obj) {
-        //     return JSON.stringify(obj) === toStrin;
-        // });
-
-        return index === object.findIndex(function (obj) {
-            // console.log('index', JSON.stringify(obj) === toStrin)
-            return JSON.stringify(obj) === toStrin; // If return true return index positions only
-        });
-    });
-    console.log(uniqArray)
-
-
-    //     var removeDuplicate = indices.filter(function (item, index, input) {
-    //         return input.indexOf(item) === index;
-    //     });
-
-
-# const fruits = ["Banana", "Orange", "Apple", "Mango", "Kiwi"];
-fruits.splice(2, 2);
 
 # NodeJs Interview Questions zxczc
 
 # 1. Why NodeJs
-    Node. js is primarily used for non-blocking, event-driven servers, due to its single-threaded nature.
+
+    1. Node. js is primarily used for non-blocking, event-driven servers, due to its single-threaded nature.
+
+    2. Node.js is a popular runtime environment for executing JavaScript on the server side
 
 # 2. NodeJs Modules
 
@@ -107,6 +71,8 @@ fruits.splice(2, 2);
 
     * Node to deal with Promises and function chaining.
 
+    * async and await are keywords in JavaScript that simplify working with asynchronous code, making it look and behave more like synchronous code.
+
 # 17. what is Normal function
 
     * Regular functions created using function declarations or expressions are constructible and callable. Since regular functions are constructible, they can be called using the new keyword
@@ -141,7 +107,7 @@ fruits.splice(2, 2);
 
     * Hoisting works well with other data types and variables. The variables can be initialized and used before they are declared.
 
-    * JavaScript only hoists declarations, not initializations. If a variable is declared and initialized after using it, the value will be undefined
+    * JavaScript only hoists declarations, not initialization. If a variable is declared and initialized after using it, the value will be undefined
 
     * Hoisting is JavaScript's default behavior of moving all declarations to the top of the current scope (to the top of the current script or the current function).
 
@@ -171,7 +137,7 @@ fruits.splice(2, 2);
 
 # 24. Closure
 
-    *  a function can acess the outside the function value that is called closure
+    *  a function can access the outside the function value that is called closure
 
 
 # 25. Data types

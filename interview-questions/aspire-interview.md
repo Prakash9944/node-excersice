@@ -101,7 +101,7 @@ for (let i = 1; i <= 100; i++) {
 
 6. what is event loop
 
-7. how can you find the specific value in array element in mongob
+7. how can you find the specific value in array element in MongoDB
 
     PersonModel.find({ favouriteFoods: { "$in" : ["sushi"]} }, ...);
 
