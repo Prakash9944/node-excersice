@@ -1,16 +1,16 @@
-// let numbers = [4, 2, 7, 1, 9];
+let numbers = [4, 2, 7, 1, 9];
 
-// for (let i = 0; i < numbers.length; i++) {
-//   for (let j = i + 1; j < numbers.length; j++) {
-//     if (numbers[i] > numbers[j]) {
-//       let temp = numbers[i];
-//       numbers[i] = numbers[j];
-//       numbers[j] = temp;
-//     }
-//   }
-// }
+for (let i = 0; i < numbers.length; i++) {
+  for (let j = i + 1; j < numbers.length; j++) {
+    if (numbers[i] > numbers[j]) {
+      let temp = numbers[i];
+      numbers[i] = numbers[j];
+      numbers[j] = temp;
+    }
+  }
+}
 
-// console.log(numbers); // Output: [1, 2, 4, 7, 9]
+console.log(numbers); // Output: [1, 2, 4, 7, 9]
 
 // numbers true
 // numbers false
@@ -36,13 +36,13 @@
 // numbers 7 9
 
 
-var numbers = [5, 12, 8, 130, 44, 11, 1111];
-var largest = numbers[1];
+// var numbers = [5, 12, 8, 130, 44, 11, 1111];
+// var largest = numbers[1];
 
-for (let i = 0; i < numbers.length; i++) {
-  if (numbers[i] > largest) {
-    largest = numbers[i];
-  }
-}
+// for (let i = 0; i < numbers.length; i++) {
+//   if (numbers[i] > largest) {
+//     largest = numbers[i];
+//   }
+// }
 
-console.log(largest);
+// console.log(largest);
