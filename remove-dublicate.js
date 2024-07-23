@@ -1,3 +1,9 @@
+// Filter with Index Tracking
+
+// 1. For each element, if the index of its first occurrence is the same as the current index, it means that this element is unique up to this point in the array.
+// 2. If the condition is true, the element is included in the uniqueArrayElements array; otherwise, it’s filtered out.
+// 3. It works by comparing the current index of each item with its first occurrence index.
+
 var object = [
     {place:"here", name:"stuff"},
     {place:"there", name:"morestuff"},
@@ -58,3 +64,22 @@ var result = array2.filter((item, index)=> {
 console.log("result", result)
 
 /*================################=================################================*/
+/*Using a Set:*/
+// 1. A Set automatically handles uniqueness with average O(1) time complexity for insertions and lookups.
+let array = [1, 2, 2, 3, 4, 4, 5];
+let uniqueArrayElements = [...new Set(array)];
+
+/*================################=================################================*/
+/*Using a HashMap: HashMap-based algorithm */
+
+function getUniqueElements(arr) {
+    const seen = new Map();
+
+    return arr.filter(item => {
+        if (!seen.has(item)) {
+            seen.set(item, true);
+            return true;
+        }
+        return false;
+    });
+}
