@@ -201,6 +201,21 @@ db.orders.aggregate([{$lookup: {from: 'inventory', localField: 'item', foreignFi
 
     db.grades.aggregate([{$project: {grades: {$map: {input: '$quizzes', as: 'grade', in: {$add: ['$$grade', 7]}}}}}])
 
+12. Replica set
+
+    # A replica set in MongoDB is a group of MongoDB servers that maintain the same data set. It provides redundancy and high availability by replicating data across multiple servers
+
+    # Primary Node: Handles all the write operations and reads (by default) for the data. Only one primary node can exist in a replica set at a time.
+
+    # Secondary Nodes: Replicate data from the primary node. They can be configured to handle read operations if required, but they cannot handle write operations.
+
+    # Replication: All data written to the primary node is replicated to the secondary nodes. This ensures that data is available even if the primary node fails.
+
+    # Failover: If the primary node fails, the replica set automatically elects a new primary from the secondary nodes. This process is seamless, ensuring high availability.
+
+    # Read Preference: You can configure how read operations are distributed among the nodes. For example, reads can be directed to the primary node only, or distributed among secondary nodes to balance load.
+
+
 db.inventory.insert([
    { "_id" : 23, "sku" : "almonds", "description": "product 1", "instock" : 120 },
    { "_id" : 24, "sku" : "bread", "description": "product 2", "instock" : 80 },
@@ -219,7 +234,6 @@ db.inventory.insert([
    { "_id" : 36, "sku" : "cashews", "description": "product 3", "instock" : 60 },
    { "_id" : 37, "sku" : "pecans", "description": "product 4", "instock" : 70 },
 ])
-
 db.orders.insert([
    { "_id" : 16, "item" : "almonds", "price" : 42, "quantity" : 2 },
    { "_id" : 17, "item" : "almonds", "price" : 25, "quantity" : 11 },
@@ -236,71 +250,6 @@ db.orders.insert([
 ])
 
 15. $or Operator
-
     db.deal.aggregate([{$match: {$or: [{status: 'New'}, {deal_amount: {$gte: '500'}}]}}])
-
     db.employee.aggregate([{ $group: {'gender': '$gender'}, age: { $gt: '25' },  count: { gender: $count }}])
-
-
-{"name": "prakash", "gender": "male", "age": 25},{"name": "suganya", "gender": "male", "age": 25},{"name": "mala", "gender": "female", "age": 25},{"name": "prakashraj", "gender": "male", "age": 25},{"name": "prakash", "gender": "male", "age": 25},{"name": "prakash", "gender": "male", "age": 95},{"name": "prakash", "gender": "male", "age": 25},{"name": "prakash", "gender": "male", "age": 25},{"name": "prakash", "gender": "male", "age": 25},{"name": "prakash", "gender": "male", "age": 25},{"name": "prakash", "gender": "male", "age": 25},{"name": "prakash", "gender": "male", "age": 25},{"name": "prakash", "gender": "female", "age": 35},{"name": "prakash", "gender": "female", "age": 35},{"name": "prakash", "gender": "female", "age": 35},{"name": "prakash", "gender": "female", "age": 35},{"name": "prakash", "gender": "female", "age": 29},{"name": "prakash", "gender": "female", "age": 15}
-
-
-{"name": "prakash", "gender": "transgender", "age": 29},{"name": "prakash", "gender": "female", "age": 15}
-{"name": "prakash", "gender": "transgender", "age": 29},{"name": "prakash", "gender": "female", "age": 15}
-
-
-
-
-db.employee.insertMany([{"name": "david", "gender": "female", "age": 59, tags: ['backend', 'php'], company: {location: { country: 'usa'}}},
-{"name": "david", "gender": "female", "age": 59, tags: ['backend', 'php'], company: {location: { country: 'australia'}}},
-{"name": "david", "gender": "female", "age": 59, tags: ['backend', 'php'], company: {location: { country: 'australia'}}},
-{"name": "david", "gender": "female", "age": 59, tags: ['backend', 'php'], company: {location: { country: 'london'}}},
-{"name": "david", "gender": "female", "age": 59, tags: ['backend', 'php'], company: {location: { country: 'london'}}},
-{"name": "david", "gender": "female", "age": 59, tags: ['backend', 'php'], company: {location: { country: 'paris'}}},
-{"name": "david", "gender": "female", "age": 59, tags: ['backend', 'php'], company: {location: { country: 'paris'}}},
-{"name": "david", "gender": "female", "age": 59, tags: ['backend', 'php'], company: {location: { country: 'paris'}}},
-{"name": "david", "gender": "female", "age": 59, tags: ['backend', 'php'], company: {location: { country: 'paris'}}},
-{"name": "david", "gender": "female", "age": 59, tags: ['backend', 'php'], company: {location: { country: 'canada'}}},
-{"name": "david", "gender": "female", "age": 59, tags: ['backend', 'php'], company: {location: { country: 'canada'}}}])
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-db.product.insertMany([])
-
-{accountId: '1234', name: 'prakash', address: 'chennai', street: 'north', mob: '994455', state: 'tamilnadu'},
-{accountId: '12345', name: 'raj', address: 'chennai', street: 'east', mob: '994455', state: 'kerla'},
-{accountId: '12345', name: 'rajesh', address: 'chennai', street: 'east', mob: '994455', state: 'delhi'},
-{accountId: '12346', name: 'prakash', address: 'chennai', street: 'south', mob: '994455', state: 'mumbai'},
-{accountId: '12347', name: 'mukesh', address: 'chennai', street: 'south', mob: '994455', state: 'up'},
-{accountId: '12348', name: 'raj', address: 'chennai', street: 'walmart', mob: '994455', state: 'mp'},
-{accountId: '12349', name: 'pk', address: 'chennai', street: 'walmart', mob: '994455', state: 'assam'},
-{accountId: '123410', name: 'dk', address: 'chennai', street: 'nokaya', mob: '994455', state: 'nepal'},
-{accountId: '123411', name: 'prakash', address: 'chennai', street: 'nokaya', mob: '994455', state: 'bopal'},
-{accountId: '123412', name: 'prakash', address: 'chennai', street: 'nokaya', mob: '994455', state: 'kashmir'},
-{accountId: '123413', name: 'dk', address: 'chennai', street: 'north', mob: '994455', state: 'punjab'},
-{accountId: '123414', name: 'dk', address: 'chennai', street: 'north', mob: '994455', state: 'karnataka'},
-{accountId: '123415', name: 'prakash', address: 'chennai', street: 'north', mob: '994455', state: 'andra'},
-{accountId: '123416', name: 'rajesh', address: 'chennai', street: 'north', mob: '994455', state: 'hariyana'},
-{accountId: '123417', name: 'rajesh', address: 'chennai', street: 'north', mob: '994455', state: 'telungana'},
-{accountId: '123418', name: 'prakash', address: 'chennai', street: 'north', mob: '994455', state: 'telungana'},
-{accountId: '123419', name: 'raj', address: 'chennai', street: 'mknagar', mob: '994455', state: 'punjab'},
-{accountId: '123420', name: 'raj', address: 'chennai', street: 'north', mob: '994455', state: 'punjab'},
-{accountId: '123421', name: 'prakash', address: 'chennai', street: 'north', mob: '994455', state: 'delhi'},
-{accountId: '123422', name: 'pk', address: 'chennai', street: 'north', mob: '994455', state: 'tamilnadu'},
-{accountId: '123423', name: 'pk', address: 'chennai', street: 'north', mob: '994455', state: 'delhi'}
-
-
-db.user.insertMany([{accountId: '1234', employee: 'IT'},{accountId: '12345', employee: 'IT'},{accountId: '12346', employee: 'IT'},{accountId: '12347', employee: 'IT'},{accountId: '12348', employee: 'IT'},{accountId: '12349', employee: 'IT'},{accountId: '123410', employee: 'IT'},{accountId: '123411', employee: 'IT'},{accountId: '123412', employee: 'IT'},{accountId: '123413', employee: 'IT'},{accountId: '123414', employee: 'IT'},{accountId: '123415', employee: 'IT'},{accountId: '123416', employee: 'IT'},{accountId: '123417', employee: 'IT'},{accountId: '1234', employee: 'IT'},{accountId: '1234', employee: 'IT'},{accountId: '1234', employee: 'IT'},{accountId: '1234', employee: 'IT'},{accountId: '1234', employee: 'IT'},{accountId: '1234', employee: 'IT'},{accountId: '1234', employee: 'IT'},{accountId: '1234', employee: 'IT'},{accountId: '1234', employee: 'IT'},{accountId: '1234', employee: 'IT'},{accountId: '1234', employee: 'IT'},{accountId: '1234', employee: 'IT'},{accountId: '1234', employee: 'IT'},{accountId: '1234', employee: 'IT'},{accountId: '1234', employee: 'IT'},{accountId: '1234', employee: 'IT'},{accountId: '1234', employee: 'IT'},{accountId: '1234', employee: 'IT'},{accountId: '1234', employee: 'IT'},{accountId: '1234', employee: 'IT'}])
 

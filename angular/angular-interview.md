@@ -183,20 +183,39 @@ https://stackblitz.com/edit/angular-hrvf9t?file=src%2Fapp%2Fapp.component.css
 
   # Angular for handling asynchronous operations. forkJoin is used to combine multiple observable into a single observable that emits an array of values from the combined observable, once all of them complete.
 
+  #  This is useful when you need to make several requests in parallel and perform an action when all requests are finished
+
   # Use forkJoin to combine the observables and subscribe to the resulting observable:
 
-  import { forkJoin } from 'rxjs';
+    import { forkJoin } from 'rxjs';
     const observable1$ = of('data1');
     const observable2$ = of('data2');
     const observable3$ = of('data3');
 
-  forkJoin([observable1$, observable2$, observable3$])
-  .subscribe(([data1, data2, data3]) => {
-    // Handle combined data
-    console.log('Data 1:', data1);
-    console.log('Data 2:', data2);
-    console.log('Data 3:', data3);
-  });
+    forkJoin([observable1$, observable2$, observable3$])
+    .subscribe(([data1, data2, data3]) => {
+        // Handle combined data
+        console.log('Data 1:', data1);
+        console.log('Data 2:', data2);
+        console.log('Data 3:', data3);
+    });
+
+    import { HttpClient } from '@angular/common/http';
+    import { forkJoin } from 'rxjs';
+    constructor(private http: HttpClient) {}
+
+    fetchData() {
+        const request1 = this.http.get('https://api.example.com/data1');
+        const request2 = this.http.get('https://api.example.com/data2');
+        const request3 = this.http.get('https://api.example.com/data3');
+
+        forkJoin([request1, request2, request3]).subscribe(results => {
+            const [data1, data2, data3] = results;
+            console.log('Data 1:', data1);
+            console.log('Data 2:', data2);
+            console.log('Data 3:', data3);
+        });
+    }
 
   # single observable that emits an array of values ([data1, data2, data3]) once all of the combined observables complete
 
