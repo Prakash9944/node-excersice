@@ -1,30 +1,34 @@
-//  Global variables can be made local (private) with closures.
+/*In JavaScript, functions are executed in the context of their lexical scope, which means they have access to variables defined in their outer scope.*/
+/*Closure is created when a function is defined inside another function, and the inner function references variables from the outer function.*/
+/*Global variables can be made local (private) with closures.*/
+/*Closure gives you access to an outer function scope[variable] from inner function*/
 
-//  Closure gives you access to an outer function scope[variable] from inner function
-
-// function outerFun() {
-//   var outerVal = 20
-
-//   function innerFun() {
-//     console.log(outerVal)
-//   }
-//   return innerFun();
-// }
-// console.log(outerFun())
-
-
-function parentFunction() {
-    let myVal =0;
-    console.log("From parent function: ", myVal);
-
-    function childFunction() {
+/****************CLOSURE**************************/
+function parent() {
+    let value = 0;
+    console.log("Parent: ", value);
+    function child() {
         let age = 40;
-        myVal += 1
-        console.log('From child function', myVal)
+        value += 1
+        console.log('From child function value', value)
     }
 
-    console.log('age', age) // ReferenceError: age is not defined
-    childFunction()
+    console.log('Parent print: ', age) // ReferenceError: age is not defined
+    child()
 }
+parent()
 
-parentFunction()
+/****************CLOSURE**************************/
+
+function outer() {
+  var outerVal = 20
+
+  function inner() {
+    console.log("Print in inner access the outer function variable: ", outerVal)
+  }
+
+  return inner();
+}
+console.log("Called outer function: ", outer())
+
+/****************CLOSURE**************************/
