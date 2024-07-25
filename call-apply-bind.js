@@ -6,65 +6,48 @@
 // apply(thisArg, argsArray)
 // bind(thisArg, arg1, arg2, /* …, */ argN)
 
-// var age  = 27;
-// function displayAge() {
-//     console.log(age)
-//     console.log(this)
-// }
+var age = 27;
+var displayAge = function() {
+    console.log("Print age value: ", age)
+    console.log("Print this value: ", this)
+}
+displayAge()
+displayAge.call()/* Call method internally called when Js function executed here call method refer to the window object*/
 
-// // displayAge()
-// displayAge.call() // Call method internally called when Js function executed  here call method refer to the window object
-
-
-// var employee = {
-//     name: "Prakash",
-//     salary: 50000,
-//     calSalrywithBonus: function () {
-//         // console.log(this) // This time called JS call function that's why we got windowObjct
-//         this.salary = this.salary + 5000;
-//         console.log(`${this.name} Salry after bonuse is ${this.salary}`)
-//     }
-// }
-
-// employee.calSalrywithBonus() // This refer to the employee object
-
-// var employee2 = {
-//     name: "prakash",
-//     salary: 40000
-// }
-
-// employee.calSalrywithBonus.call(employee2) // This time called but call refer to the employee2 Object
-
+var employee = {
+    name: "PRAKASH",
+    salary: 50000,
+    callSalarywithBonus: function () {
+        // console.log(this) // This time called JS call function that's why we got windowObjct
+        this.salary = this.salary + 5000;
+        console.log(`${this.name} Salary after bonus is ${this.salary}`)
+    }
+}
+// employee.callSalarywithBonus() /*This refer to the employee object*/
+var employee2 = {
+    name: "PRAKASH",
+    salary: 40000
+}
+/*This time called but call refer to the employee2 Object*/
+employee.callSalarywithBonus.call(employee2)
 
 // # Another example
 //  Whenever call function with a given context or this and pass arguments to one by one
+function callSalarywithBonus(bonus) {
+    // console.log(this) // This time called JS call function that's why we got windowObjct
+    this.salary = this.salary + bonus;
+    console.log(`${this.name} Salary after bonus is ${this.salary}`)
+}
+var employee = { name: "PRAKASH", salary: 50000 };
+var employee2 = { name: "RAJ", salary: 40000 };
 
-// function calSalrywithBonus(bonus) {
-//     // console.log(this) // This time called JS call function that's why we got windowObjct
-//     this.salary = this.salary + bonus;
-//     console.log(`${this.name} Salry after bonuse is ${this.salary}`)
-// }
+callSalarywithBonus.call(employee, 5000) // Whenever call function with a given context or this and pass arguments to one by one we can use call()
+callSalarywithBonus.call(employee2, 5000) // Whenever call function with a given context or this and pass arguments to one by one we can use call()
+callSalarywithBonus.apply(employee2, [6000]) // Whenever call function with a given context or this and pass arguments to array we can use apply()
 
-// var employee = {
-//     name: "prakash",
-//     salary: 50000
-// }
-
-// var employee2 = {
-//     name: "prakash",
-//     salary: 40000
-// }
-
-// calSalrywithBonus.call(employee, 5000) //  Whenever call function with a given context or this and pass arguments to one by one we can use call()
-// calSalrywithBonus.call(employee2, 5000) //  Whenever call function with a given context or this and pass arguments to one by one we can use call()
-// calSalrywithBonus.apply(employee2, [6000]) //  Whenever call function with a given context or this and pass arguments to array we can use apply()
-
-// var bindMeth = calSalrywithBonus.bind(employee2) //  Bind always given the functions we can bind the context of the arguments
-// console.log('bindMeth', bindMeth(234)) // Call bind aplay always except this keyword refercens
-
-// bindMeth.call(employee2, 5000)
-
-
+var bindMethod = callSalarywithBonus.bind(employee2) // Bind always given the functions we can bind the context of the arguments
+console.log('bindMethod', bindMethod(234)) // Call bind apply always except this keyword references
+bindMethod.call(employee2, 5000)
 
 // Another Example https://www.youtube.com/watch?v=YUDLMbC-pLU
 // # Each function have context which mean this keyword
