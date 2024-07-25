@@ -1,26 +1,24 @@
-var arr = [3, 6, 2, 56, 32, 5, 89, 32];
-var largest = arr[0];
+// Linear Search for Maximum Value(The linear search algorithm is a straightforward and efficient way to find the maximum number in an array,)
 
-// Using For loop
-for (var i = 0; i < arr.length; i++) {
-    if (largest < arr[i] ) {
-        largest = arr[i];
-    }
-    // console.log('largest', largest)
+// 1. Initialize: Start with the first element of the array as the current maximum.
+
+// 2. Iterate: Loop through each element in the array
+
+// 3. Compare: For each element, compare it with the current maximum
+
+// 4. Update: If the current element is greater than the current maximum, update the maximum.
+
+// 5. Return: After looping through all elements, the current maximum is the largest value in the array.
+
+var maxNumbers = [5, 12, 8, 130, 44, 11, 1111];
+var largest = maxNumbers[1];
+
+for (let i = 0; i < maxNumbers.length; i++) {
+  if (maxNumbers[i] > largest) {
+    largest = maxNumbers[i];
+  }
 }
-console.log(largest);
+console.log("Max number: ", largest);
 
-// // Using Math.max function
-// let array = [10, 5, 25, 8, 20];
-// let maxElement = Math.max(...array);
-// console.log(maxElement);
-
-// Using reduce function
-// let array = [10, 5, 25, 8, 20];
-// let maxElement = array.reduce(function(a, b) {
-//   return Math.max(a, b);
-// });
-
-// console.log(maxElement); // Output: 25
-
-
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+console.log("Sorted order: ", fruits.sort());
