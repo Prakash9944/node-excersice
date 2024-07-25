@@ -1,3 +1,6 @@
+/*Use Promise.all when you want to wait for all promises to successfully complete, and you're fine with the whole operation failing if any single promise fails.
+Use Promise.allSettled when you want to wait for all promises to complete regardless of whether they succeed or fail, and you want to know the outcome of each promise.*/
+
 // Promise.allSettled takes an array of promises and returns a single promise that resolves after all of the promises in the array have either resolved or rejected. It returns an array of objects describing the outcome of each promise.
 
 // const promises = [

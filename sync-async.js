@@ -1,3 +1,11 @@
+/*Synchronous processing:
+        with for...of and for loops: Each number is processed one by one, with a 1-second delay between each due to the await keyword.
+*/
+
+/*Asynchronous processing:
+        with forEach: All numbers are processed concurrently, resulting in potentially out-of-order logs.
+*/
+
 var promiseFunction = function  (argument) {
     return new Promise((resolve, reject) => {
         setTimeout(()=> {
