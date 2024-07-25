@@ -15,8 +15,8 @@ var extractFun = obj.simple;
 // console.log("Compare two funciton type: ", obj.simple() === global) // False
 // console.log("Compare two funciton type: ", extractFun() === global) // True
 
-console.log("Here var keyword are hoisted not initialization: ", number) // var keyword declaration are hosted initialization not
-var number = 100
+// console.log("Here var keyword are hoisted not initialization: ", number) // var keyword declaration are hosted initialization not
+// var number = 100
 
 // console.log("Here const keyword not hoisted because const did not have default value: ", constNumber) // const keyword not hosted
 // const constNumber = 100
@@ -153,17 +153,18 @@ var number = 100
 
 // var person = {
 //     age: 38,
+//     sex: "male",
 //     displayAge: displayAge,
 //     nestedPerson: {
 //         age: 40,
 //         displayAge: displayAge
 //     }
 // }
-// // In javascript value of this keyword determined by how a function is called (runtime binding)
+// In java-script value of this keyword determined by how a function is called (runtime binding)
 // person.displayAge() // This keyword refer to the object that is currently calling function output 38
 // person.nestedPerson.displayAge() // This keyword refer to the object that is currently calling function output 40
 
-// //  THis is Normal function example
+/*THis is Normal function example*/
 // var personOne = {
 //     age: 25,
 //     greate1: function () {
