@@ -4,7 +4,7 @@
 
 # What is clickhoseu mongod redis
 
-# do you use any sync mechanism  for three dbs
+# do you use any sync mechanism for three dbs
 
 # explain console which one is print order by
 
