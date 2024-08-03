@@ -6,30 +6,30 @@
 // apply(thisArg, argsArray)
 // bind(thisArg, arg1, arg2, /* …, */ argN)
 
-var age = 27;
-var displayAge = function() {
-    console.log("Print age value: ", age)
-    console.log("Print this value: ", this)
-}
-displayAge()
-displayAge.call()/* Call method internally called when Js function executed here call method refer to the window object*/
+// var age = 27;
+// var displayAge = function() {
+//     console.log("Print age value: ", age)
+//     console.log("Print this value: ", this)
+// }
+// displayAge()
+// displayAge.call()/* Call method internally called when Js function executed here call method refer to the window object*/
 
-var employee = {
-    name: "PRAKASH",
-    salary: 50000,
-    callSalarywithBonus: function () {
-        // console.log(this) // This time called JS call function that's why we got windowObjct
-        this.salary = this.salary + 5000;
-        console.log(`${this.name} Salary after bonus is ${this.salary}`)
-    }
-}
-// employee.callSalarywithBonus() /*This refer to the employee object*/
-var employee2 = {
-    name: "PRAKASH",
-    salary: 40000
-}
-/*This time called but call refer to the employee2 Object*/
-employee.callSalarywithBonus.call(employee2)
+// var employee = {
+//     name: "PRAKASH",
+//     salary: 50000,
+//     callSalarywithBonus: function () {
+//         // console.log(this) // This time called JS call function that's why we got windowObjct
+//         this.salary = this.salary + 5000;
+//         console.log(`${this.name} Salary after bonus is ${this.salary}`)
+//     }
+// }
+// // employee.callSalarywithBonus() /*This refer to the employee object*/
+// var employee2 = {
+//     name: "PRAKASH",
+//     salary: 40000
+// }
+// /*This time called but call refer to the employee2 Object*/
+// employee.callSalarywithBonus.call(employee2)
 
 // # Another example
 //  Whenever call function with a given context or this and pass arguments to one by one
@@ -45,9 +45,9 @@ callSalarywithBonus.call(employee, 5000) // Whenever call function with a given 
 callSalarywithBonus.call(employee2, 5000) // Whenever call function with a given context or this and pass arguments to one by one we can use call()
 callSalarywithBonus.apply(employee2, [6000]) // Whenever call function with a given context or this and pass arguments to array we can use apply()
 
-var bindMethod = callSalarywithBonus.bind(employee2) // Bind always given the functions we can bind the context of the arguments
-console.log('bindMethod', bindMethod(234)) // Call bind apply always except this keyword references
-bindMethod.call(employee2, 5000)
+// var bindMethod = callSalarywithBonus.bind(employee2) // Bind always given the functions we can bind the context of the arguments
+// console.log('bindMethod', bindMethod(234)) // Call bind apply always except this keyword references
+// bindMethod.call(employee2, 5000)
 
 // Another Example https://www.youtube.com/watch?v=YUDLMbC-pLU
 // # Each function have context which mean this keyword
@@ -106,3 +106,24 @@ bindMethod.call(employee2, 5000)
 // // This will return "Mary Doe"
 // var logs2 = person.fullName.call(person2);
 // console.log("Print person object2", logs2)
+
+
+
+// var person = {
+//     firstName: 'John',
+//     lastName: 'Doe',
+//     fullName: function(title) {
+//         return `${title} ${this.firstName} ${this.lastName}`;
+//     }
+// };
+
+// var person2 = {
+//     firstName: 'Jane',
+//     lastName: 'Doe'
+// };
+
+// console.log(person.fullName.call(person2, 'Ms.')); // Output: Ms. Jane Doe
+// console.log(person.fullName.apply(person2, ['Mrs.'])); // Output: Mrs. Jane Doe
+
+// var person3FullName = person.fullName.bind(person2, 'Dr.');
+// console.log(person3FullName()); // Output: Dr. Jane Doe

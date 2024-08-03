@@ -12,11 +12,11 @@
 
 7. what is observable in angular
 
-8. handle multiple req in angular
+8. handle multiple request in angular
 
 9. what is regex
 
-10. what is async pipe
+10. what is ASYNC pipe
 
 11. what is forkjjoin
 

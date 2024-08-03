@@ -262,3 +262,49 @@ https://stackblitz.com/edit/angular-hrvf9t?file=src%2Fapp%2Fapp.component.css
     # HostBinding is used to set properties on the host element,
 
     # HostListener is used to listen for events on the host element.
+
+
+## what is Interceptor
+
+    import { Injectable } from '@angular/core';
+
+    import {
+      HttpRequest,
+      HttpHandler,
+      HttpEvent,
+      HttpInterceptor
+    } from '@angular/common/http';
+    import { Observable, tap } from 'rxjs';
+
+    @Injectable()
+    export class LoggingInterceptor implements HttpInterceptor {
+
+      constructor() {}
+
+      intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+        return next.handle(request).pipe(
+          tap((event: HttpEvent<any>) => {
+            console.log('Incoming HTTP response', event);
+          })
+        );
+      }
+    }
+
+
+    var routes: Routes = [{
+    path: "user",
+    component: UserComponent
+}]
+
+
+interceptor(req any, next) {
+
+}
+
+
+@Directive({
+    app: "[user]",
+    template: "html",
+    style: "css"
+})
+

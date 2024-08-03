@@ -253,3 +253,43 @@ db.orders.insert([
     db.deal.aggregate([{$match: {$or: [{status: 'New'}, {deal_amount: {$gte: '500'}}]}}])
     db.employee.aggregate([{ $group: {'gender': '$gender'}, age: { $gt: '25' },  count: { gender: $count }}])
 
+
+
+16. update (updateOne: Updates only the first document that matches the filter criteria.)
+    db.collection.update(
+      <filter>,
+      <update>,
+      { upsert: <boolean>, multi: <boolean> }
+    )
+
+    <filter>: Specifies the criteria to match the document(s) to be updated.
+    <update>: Specifies the modifications to apply.
+    upsert: Optional. If true, creates a new document if no documents match the filter.
+    multi: Optional. When set to true, it updates all documents that match the filter (deprecated in favor of updateMany).
+
+
+17. updateMany: May be slower if many documents are updated, but it’s necessary for bulk updates.
+    upsert: Optional. If true, creates a new document if no documents match the filter.
+
+db.collection.updateMany(
+  <filter>,
+  <update>,
+  { upsert: <boolean> }
+)
+
+18. $addToSet
+    operator is used to add a value to an array field only if the value does not already exist in the array
+    db.collection.update(
+      { <filter> },
+      { $addToSet: { <field>: <value> } }
+    )
+
+19. $set
+    operator is used to set the value of a field in a document. If the field does not exist, $set will create it with the specified value. If the field does exist, $set will overwrite its value with the new one
+
+    db.collection.update(
+      { <filter> },
+      { $set: { <field>: <value> } }
+    )
+
+

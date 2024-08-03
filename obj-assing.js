@@ -9,4 +9,4 @@ console.log(obj1)
 var arr1 = [1, 2, 3, 4]
 var arr2 = [];
 arr2.push(5,6,7)
-console.log("Array Two", arr2)
+console.log("Array Two", arr2.length)

@@ -1,5 +1,10 @@
-/*Use Promise.all when you want to wait for all promises to successfully complete, and you're fine with the whole operation failing if any single promise fails.
-Use Promise.allSettled when you want to wait for all promises to complete regardless of whether they succeed or fail, and you want to know the outcome of each promise.*/
+/*
+# Use Promise.all when you want to wait for all promises to successfully complete, and you're fine with the whole operation failing if any single promise fails.
+# When you need to perform multiple asynchronous operations concurrently and wait for all of them to complete before proceeding.
+
+# Use Promise.allSettled when you want to wait for all promises to complete regardless of whether they succeed or fail, and you want to know the outcome of each promise.
+
+*/
 
 // Promise.allSettled takes an array of promises and returns a single promise that resolves after all of the promises in the array have either resolved or rejected. It returns an array of objects describing the outcome of each promise.
 
@@ -15,17 +20,17 @@ Use Promise.allSettled when you want to wait for all promises to complete regard
 // .then(results => {
 //     console.log('results', results)
 
-//     // results.forEach(result => {
-//     //     if (result.status === 'fulfilled') {
-//     //         console.log(`Promise fulfilled with value: ${result.value}`);
-//     //     } else {
-//     //         console.log(`Promise rejected with error: ${result.value.message}`);
-//     //     }
-//     // });
+//     results.forEach(result => {
+//         if (result.status === 'fulfilled') {
+//             console.log(`Promise fulfilled with value: ${result.value}`);
+//         } else {
+//             console.log(`Promise rejected with error: ${result.value.message}`);
+//         }
+//     });
 // })
 // .catch(error => console.error("Rejected promise", error));
 
-// // Promise.all takes an array of promises and returns a single promise that resolves when all of the promises in the array have resolved. If any of the promises in the array reject, the returned promise is rejected with the reason of the first promise that rejected.
+// Promise.all takes an array of promises and returns a single promise that resolves when all of the promises in the array have resolved. If any of the promises in the array reject, the returned promise is rejected with the reason of the first promise that rejected.
 // Promise.all(promises)
 //   .then(results => {
 //       console.log('results', results)
@@ -44,9 +49,9 @@ Use Promise.allSettled when you want to wait for all promises to complete regard
 // );
 
 // Promise.allSettled([promise1, promise2]).then((results) => {
-//     console.log("Result", results)
+//     // console.log("Result", results)
 //     results.forEach((result) => {
-//         console.log(result.status)
+//         console.log(result)
 //     });
 // });
 
@@ -58,6 +63,8 @@ Use Promise.allSettled when you want to wait for all promises to complete regard
 // Promise.any([promise1, promise2, promise3]).then((value) => {
 //     console.log("Promise any", value)
 // });
+
+// Promise.any is a method in JavaScript that is used to handle multiple promises and resolve as soon as any one of them resolves. It is useful when you want to take action as soon as at least one promise fulfills, rather than waiting for all promises to resolve or handling errors if any promise rejects.
 
 // const promise1 = new Promise((resolve, reject) => {
 //     setTimeout(reject, 500, 'Error: promise1 failed');
@@ -126,7 +133,7 @@ Use Promise.allSettled when you want to wait for all promises to complete regard
 
 
 // const promise1 = new Promise((resolve, reject) => {
-//     setTimeout(reject, 300, 'promise1 rejected');
+//     setTimeout(reject, 3000, 'promise1 rejected');
 // });
 
 // const promise2 = new Promise((resolve, reject) => {
@@ -155,7 +162,7 @@ Use Promise.allSettled when you want to wait for all promises to complete regard
 //     return Promise.race([fetchPromise, timeoutPromise]);
 // };
 
-// fetchWithTimeout('https://jsonplaceholder.typicode.com/todos/1', 100)
+// fetchWithTimeout('https://jsonplaceholder.typicode.com/todos/1', 1000)
 // .then((response) => response.json())
 // .then((data) => {
 //     console.log(data);

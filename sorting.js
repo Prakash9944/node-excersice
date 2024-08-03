@@ -29,8 +29,8 @@ console.log("Compare first element is greater than second we need change the ele
 
 // 5. Return: After looping through all elements, the current maximum is the largest value in the array.
 
-var maxNumbers = [5, 12, 8, 130, 44, 11, 1111];
-var largest = maxNumbers[1];
+var maxNumbers = [5, 12, 8, 130, 44, 11, 1111, 8976];
+var largest = maxNumbers[0];
 
 for (let i = 0; i < maxNumbers.length; i++) {
   if (maxNumbers[i] > largest) {

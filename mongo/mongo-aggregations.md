@@ -405,6 +405,8 @@ db.survey.find(
     { $avg: <expression> } // expression refer to the input documents
 
     db.person.aggregate([{ $group: {_id: "$name", avg: {$avg: "$age"}}}])
+
+    db.person.aggregate([{ $group: {_id: "$name", max: {$max: "$age"}}}])
     { "_id" : "suganya", "avg" : 25 }
     { "_id" : "prakashraj", "avg" : 25 }
     { "_id" : "david", "avg" : 59 }

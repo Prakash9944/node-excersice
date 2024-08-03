@@ -101,8 +101,8 @@
 
 // playVideo.call({name: "prakashraj"});
 
-var callShowVideoFun = channel1.showVideos()
-console.log("callShowVideoFun", callShowVideoFun);
+// var callShowVideoFun = channel1.showVideos()
+// console.log("callShowVideoFun", callShowVideoFun);
 
 // function Share(channel_tittle) {
 //     this.channel_tittle = channel_tittle;

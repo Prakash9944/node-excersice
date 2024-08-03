@@ -168,3 +168,15 @@
 
 
 ###  Node JS Processing model mainly based on Javascript Event based model with Javascript callback mechanism
+
+    #Request Arrival: An HTTP request arrives at the Node.js server.
+
+    #Event Loop Queue: The request is added to the event loop's queue.
+
+    #Immediate Processing: The event loop picks up the request and performs any synchronous operations immediately.
+
+    #Asynchronous I/O: If there are any asynchronous I/O operations, they are offloaded to the system's thread pool managed by libuv.
+
+    #Callback Execution: Once the I/O operation completes, the callback is added back to the event loop’s queue.
+
+    #Response: The event loop processes the callback and sends the response back to the client.
