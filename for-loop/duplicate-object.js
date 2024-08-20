@@ -30,3 +30,14 @@ var removedDuplicate = countries.filter((item, index) => {
 
 console.log("Removed duplicate object...", removedDuplicate)
 
+
+
+var lang = ["Java", "Python", "Java", "Go", "PhP"]
+var pushDistinctValue = [];
+for (let i = 0; i < lang.length; i ++) {
+    let item = lang[i];
+    if(lang.indexOf(item) === i) {
+        pushDistinctValue.push(item)
+    }
+}
+console.log("Try programiz.pro", pushDistinctValue);
