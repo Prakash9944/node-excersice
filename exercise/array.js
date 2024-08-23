@@ -18,3 +18,24 @@ obj.forEach((item) => {
 })
 console.log("NAMECOUNT", nameCount)
 /*===============================*/
+
+function findPairWithSum(target, array) {
+  var seen = new Set() // 6, 4, 0, 3, 5
+  for (let num of array) {
+
+    let complement = target - num;
+    console.log("complement", complement)
+
+    if (seen.has(complement)) {
+      return [complement , num]
+    }
+
+    seen.add(num)
+  }
+
+  console.log("seenseen", seen)
+
+}
+
+var targetNumber = findPairWithSum(8, [2, 4, 8, 5, 3])
+console.log("targetNumber", targetNumber)
