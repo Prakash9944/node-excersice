@@ -4,14 +4,17 @@
 // 2. Arrow functions do not have their own this context. Instead, they inherit this from the surrounding lexical context
 // 3. Arrow function does not have new keyword its not construct
 // 4. In an arrow function, the this keyword is lexically bound, meaning it refers to the this value of the surrounding (parent) context in which the arrow  function is defined.
+// 5. In JavaScript, hoisting refers to the behavior where variable and function declarations are moved to the top of their containing scope during the compilation phase, before the code is executed. This allows functions and variables to be used before they are declared in the code.
+// 6. Single Parameter without Parentheses If an arrow function takes exactly one parameter, you can omit the parentheses.
 
-var obj = {
-    simple() {
-        return this
-    }
-}
 
-var extractFun = obj.simple;
+// var obj = {
+//     simple() {
+//         return this
+//     }
+// }
+
+// var extractFun = obj.simple;
 // console.log("Compare two funciton type: ", obj.simple() === global) // False
 // console.log("Compare two funciton type: ", extractFun() === global) // True
 
@@ -208,15 +211,15 @@ var extractFun = obj.simple;
 // greate2()
 
 
-// const obj = {
-//     name: "Prakash",
-//     methodOne: () => {
-//         return this;
-//     },
-//     methodTwo: function () {
-//         return this.name;
-//     }
-// }
+const obj = {
+    name: "Prakash",
+    methodOne: () => {
+        return this;
+    },
+    methodTwo: function () {
+        return this;
+    }
+}
 
-// console.log('123', obj.methodOne())
-// console.log('1234', obj.methodTwo())
+console.log('123', obj.methodOne())
+console.log('1234', obj.methodTwo())

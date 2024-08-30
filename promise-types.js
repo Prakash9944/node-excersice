@@ -8,12 +8,12 @@
 
 // Promise.allSettled takes an array of promises and returns a single promise that resolves after all of the promises in the array have either resolved or rejected. It returns an array of objects describing the outcome of each promise.
 
-// const promises = [
-//     Promise.resolve(1),
-//     Promise.resolve(2),
-//     Promise.reject(new Error('Error occurred from promise')),
-//     Promise.resolve(3)
-// ];
+const promises = [
+    Promise.resolve(1),
+    Promise.resolve(2),
+    Promise.reject(new Error('Error occurred from promise')),
+    Promise.resolve(3)
+];
 
 // Promise
 // .allSettled(promises)
@@ -24,7 +24,7 @@
 //         if (result.status === 'fulfilled') {
 //             console.log(`Promise fulfilled with value: ${result.value}`);
 //         } else {
-//             console.log(`Promise rejected with error: ${result.value.message}`);
+//             console.log(`Promise rejected with error: ${JSON.stringify(result)}`);
 //         }
 //     });
 // })
@@ -34,13 +34,13 @@
 // Promise.all(promises)
 //   .then(results => {
 //       console.log('results', results)
-//     // results.forEach(result => {
-//     //   if (result.status === 'fulfilled') {
-//     //     console.log(`Promise fulfilled with value: ${result.value}`);
-//     //   } else {
-//     //     console.log(`Promise rejected with error: ${result.value.message}`);
-//     //   }
-//     // });
+//     results.forEach(result => {
+//       if (result.status === 'fulfilled') {
+//         console.log(`Promise fulfilled with value: ${result.value}`);
+//       } else {
+//         console.log(`Promise rejected with error: ${JSON.stringify(result)}`);
+//       }
+//     });
 // }).catch(error => console.error("Error Promise all: ", error));
 
 // const promise1 = Promise.resolve(3);

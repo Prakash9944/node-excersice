@@ -6,6 +6,12 @@
 // apply(thisArg, argsArray)
 // bind(thisArg, arg1, arg2, /* …, */ argN)
 
+// 1 The call method allows you to invoke a function with a specific this context and arguments provided individually
+    // func.call(thisArg, arg1, arg2, ...)
+// 2 The apply method is similar to call, but it takes arguments as an array or array-like object.
+    // func.apply(thisArg, [arg1, arg2, ...])
+// 3 The bind method creates a new function with a specific this context and optional arguments. Unlike call and apply, bind does not execute the function immediately; instead, it returns a new function that can be called later.
+
 // var age = 27;
 // var displayAge = function() {
 //     console.log("Print age value: ", age)

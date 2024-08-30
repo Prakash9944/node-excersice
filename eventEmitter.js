@@ -1,3 +1,16 @@
+/*1. EventEmitter is a core module in Node.js that allows objects to communicate with each other by emitting and listening to events.*/
+/*2. */
+
+
+const EventEmitter = require('events');
+const eventEmitter = new EventEmitter();
+
+eventEmitter.on('order', (orderId, item) => {
+    console.log(`Order received: ID = ${orderId}, Item = ${item}`);
+});
+
+eventEmitter.emit('order', 1234, 'Laptop'); // Logs: "Order received: ID = 1234, Item = Laptop"
+
 
 // get the reference of EventEmitter class of events module
 var event = require('events');

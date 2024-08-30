@@ -1,3 +1,7 @@
+# Use PUT when you need to update or replace the entire resource and you have the complete representation of the resource.
+
+# Use PATCH when you only need to update specific fields or attributes of the resource, and you don’t want to send the entire resource.
+
 # PUT: Replaces the entire resource. Use it when you want to update the complete profile.
 
     # PUT: Replaces the entire resource. Use it when you want to update the complete profile.

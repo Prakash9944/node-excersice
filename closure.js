@@ -2,6 +2,7 @@
 /*Closure is created when a function is defined inside another function, and the inner function references variables from the outer function.*/
 /*Global variables can be made local (private) with closures.*/
 /*Closure gives you access to an outer function scope[variable] from inner function*/
+/*inner function can accesses outer function variables*/
 
 /****************CLOSURE**************************/
 function parent() {
