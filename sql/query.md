@@ -8,6 +8,12 @@
         FROM Employees
         INNER JOIN Departments ON Employees.DepartmentID = Departments.DepartmentID;
 
+    # Syntax
+        SELECT table1.column1,table1.column2,table2.column1
+        FROM table1
+        INNER JOIN table2
+        ON  table1.matching_column = table2.matching_column;
+
 # LEFT JOIN (or LEFT OUTER JOIN)
 
     # Description: Returns all rows from the left table, and the matched rows from the right table. The result is NULL from the right side if there is no match
