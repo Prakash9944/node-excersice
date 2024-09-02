@@ -215,6 +215,27 @@ db.orders.aggregate([{$lookup: {from: 'inventory', localField: 'item', foreignFi
 
     # Read Preference: You can configure how read operations are distributed among the nodes. For example, reads can be directed to the primary node only, or distributed among secondary nodes to balance load.
 
+    # MongoDB provides high availability through replica sets. A replica set is a group of MongoDB servers that maintain the same data, ensuring that if one server goes down, another can take over without any data loss.
+
+13. Key Features of MongoDB:
+
+    # Document-Oriented Storage:
+        MongoDB stores data in a flexible, JSON-like format called BSON (Binary JSON). This means that each record (or document) can have a different structure, allowing for a more flexible and dynamic data model compared to the rigid schema of traditional relational databases.
+
+    # Scalability:
+        MongoDB is designed to scale horizontally by distributing data across multiple servers (sharding). This makes it a good choice for applications that need to handle large volumes of data and high traffic.
+
+    # Flexible Schema:
+        Unlike relational databases, MongoDB does not require a predefined schema. This allows developers to easily modify the data structure as the application evolves, without the need to alter a rigid schema.
+
+    # High Availability:
+        MongoDB provides high availability through replica sets. A replica set is a group of MongoDB servers that maintain the same data, ensuring that if one server goes down, another can take over without any data loss.
+
+    #Indexing:
+        MongoDB supports various types of indexes on data, which improves query performance. This includes single-field, compound, geospatial, and text indexes.
+
+    # Aggregation Framework:
+        MongoDB offers a powerful aggregation framework that allows you to perform operations like filtering, grouping, and transforming data. This is useful for performing complex data processing and analysis directly within the database.
 
 db.inventory.insert([
    { "_id" : 23, "sku" : "almonds", "description": "product 1", "instock" : 120 },
@@ -254,7 +275,6 @@ db.orders.insert([
     db.employee.aggregate([{ $group: {'gender': '$gender'}, age: { $gt: '25' },  count: { gender: $count }}])
 
 
-
 16. update (updateOne: Updates only the first document that matches the filter criteria.)
     db.collection.update(
       <filter>,
@@ -279,17 +299,66 @@ db.collection.updateMany(
 
 18. $addToSet
     operator is used to add a value to an array field only if the value does not already exist in the array
-    db.collection.update(
-      { <filter> },
-      { $addToSet: { <field>: <value> } }
-    )
+    Example:-
+        db.collection.update(
+          { <filter> },
+          { $addToSet: { <field>: <value> } })
+        db.inventory.insertOne({ _id: 1, item: "polarizing_filter", tags: [ "electronics", "camera" ] })
+        db.inventory.updateOne( { _id: 1 }, { $addToSet: { tags: "accessories" } })
 
 19. $set
     operator is used to set the value of a field in a document. If the field does not exist, $set will create it with the specified value. If the field does exist, $set will overwrite its value with the new one
 
-    db.collection.update(
-      { <filter> },
-      { $set: { <field>: <value> } }
-    )
+    Example:-
+        db.collection.update(
+          { <filter> },
+          { $set: { <field>: <value> } }
+        )
 
+        db.set.findOneAndUpdate({"_id" : 100}, {$set: {"ratings.0.rating": "Tall"}})
 
+20. $PUSH In MongoDB, the $push operator is used to append a value to an array field within a document. If the specified field is not an array, MongoDB will create the field as an array and add the value to it.
+    Example:-
+        { $push: { <field1>: <value1>, ... } }
+        db.students.insertOne( { _id: 1, scores: [ 44, 78, 38, 80 ] } )
+        db.students.updateOne( { _id: 1 }, { $push: { scores: 89 } })
+
+21. $POP
+    The $pop operator removes the first or last element of an array. Pass $pop a value of -1 to remove the first element of an array and 1 to remove the last element in an array.
+    The $pop operation fails if the <field> is not an array
+
+    Example:-
+        { $pop: { <field>: <-1 | 1>, ... } }
+
+        db.students.insertOne( { _id: 1, scores: [ 8, 9, 10 ] } )
+        db.students.updateOne( { _id: 1 }, { $pop: { scores: -1 } } )
+
+22. $PULL
+    The $pull operator removes from an existing array all instances of a value or values that match a specified condition.
+
+    Example:-
+        { $pull: { <field1>: <value|condition>, <field2>: <value|condition>, ... } }
+        db.stores.insertMany([
+           {
+              _id: 1,
+              fruits: [ "apples", "pears", "oranges", "grapes", "bananas" ],
+              vegetables: [ "carrots", "celery", "squash", "carrots" ]
+           },
+           {
+              _id: 2,
+              fruits: [ "plums", "kiwis", "oranges", "bananas", "apples" ],
+              vegetables: [ "broccoli", "zucchini", "carrots", "onions" ]
+           }
+        ])
+        db.stores.updateOne({ _id: 2 }, { $pull: { fruits: { $in: [ "apples", "oranges" ] }, vegetables: "carrots" } })
+
+23. $EACH
+    # The $each modifier in MongoDB is used with the $push (or $addToSet) operator to add multiple elements to an array in a single operation. This is particularly useful when you want to append several elements to an array at once, rather than adding them one by one
+    # Without $each, the $push operator can only add a single element to an array. If you need to add multiple elements, you would otherwise have to make multiple $push operations, which can be inefficient and lead to multiple database writes. Using $each allows you to add all the elements in one operation, reducing the overhead and ensuring that the elements are added together atomically
+
+    Example:-
+
+        { $addToSet: { <field>: { $each: [ <value1>, <value2> ... ] } } }
+        { $push: { <field>: { $each: [ <value1>, <value2> ... ] } } }
+
+        db.students.updateOne({"_id" : 1}, {$push: {scores: {$each: [100,101,102]}}})
