@@ -61,3 +61,27 @@
         next: value => console.log('Received:', value),
         complete: () => console.log('Completed')
     });
+
+    let observable = new Observable<any>((obs) => {
+      obs.next(1);
+      obs.next(2);
+      setTimeout(function () {
+        obs.next(3);
+        obs.error('Error happens here!');
+        obs.complete();
+      }, 1000);
+    });
+
+    observable.subscribe({
+      next(result) {
+        console.log('Result: ', result);
+      },
+
+      error(error) {
+        console.log('error: ', error);
+      },
+
+      complete() {
+        console.log('complete observable!');
+      }
+    });

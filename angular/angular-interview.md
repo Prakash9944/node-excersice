@@ -12,9 +12,53 @@
 
 # @ViewChild
 
-* ViewChild is used to access child components or elements in the template,
+* ViewChild is used to access child components or elements or directive in the template,
+
+* @ViewChild is used to get a reference to a single child component, directive, or DOM element.
+
+* It's typically used when you need to interact with a specific element or component after it has been rendered
 
 * while @Input and @Output are used to pass data between components
+
+# ngAfterViewInit:
+
+ * Both @ViewChild and @ViewChildren should be used within or after the ngAfterViewInit life cycle hook to ensure that the view has been fully initialized. Accessing them earlier might result in undefined or incomplete references
+
+ * Imagine you have a parent component that needs to access a child component's data or methods. Using ngAfterViewInit, you can ensure that the child component has been fully initialized before interacting with it.
+
+ import { component } from "@angular/core"
+ @component({
+    selector: "app-child",
+    templateUrl: "./child.html",
+    styleUrl: "./child.css"
+ })
+ export Class childComponent {
+    constructor() {}
+    showMsg: string = "Show msg after child component fully initialized via parent!"
+    sayHi () {
+        console.log("Say hi")
+    }
+ }
+ import { component, ViewChild, AfterViewInit } from "@angular/core"
+ import { ChildComponent } from "./childComponent"
+ @component({
+    selector: "app-parent",
+    templateUrl: "./parent.html",
+    styleUrl: "./parent.css"
+ })
+
+ export Class ParentComponent implements AfterViewInit {
+    @ViewChild(ChildComponent) viewChild: ChildComponent;
+
+    constructor(){}
+    ngViewAfterInit() {
+        console.log("Show Child props: ", this.viewChild.showMsg)
+        this.viewChild.sayHi()
+    }
+ }
+ parent.hmtl
+ ============
+ <app-child> </app-child>
 
 ## What is angular lifecycle hooks
 
@@ -296,15 +340,42 @@ https://stackblitz.com/edit/angular-hrvf9t?file=src%2Fapp%2Fapp.component.css
     component: UserComponent
 }]
 
+## Ecapsulation
 
-interceptor(req any, next) {
+    * Component encapsulation in frameworks like Angular refers to how a component's view, styles, and behavior are kept isolated from other components. This ensures that the  internal workings of a component (such as its HTML structure and CSS) don’t interfere with or get affected by the surrounding components. Encapsulation allows for better modularity, maintainability, and reusability of components
 
+
+import {CanActivate, Router } from "@angular/router"
+import {authService} from "../authService"
+
+@Injectable({
+    ProvoiderIn: "root"
+})
+
+export class CanActivate implement CanActivate {
+    constructor(private auth: authService, route: Router) {}
+
+    CanActivate(): boolean {
+        let isAutherised = this.auth.service()
+
+        if (isAutherised) {
+            return true;
+        } else {
+            this.route.navigate('/login')
+        }
+    }
 }
 
 
-@Directive({
-    app: "[user]",
-    template: "html",
-    style: "css"
+const rount: Routes = [{
+    path: "Home", component: HomeComponent
+},{
+    path: "User", component: UserComponent, canActive: [authService]
+}]
+
+
+@NgModule({
+    imports: [RouterModule.forRoot(rount)],
+    exports: RouterModule
 })
 

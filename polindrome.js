@@ -24,19 +24,19 @@
 // If I pass 100 - it should return 101
 
 
-// function nextPalindrome(n) {
-//   n++;
-//   console.log('n', n)
-//   while (!isPalindrome(n.toString())) {
-//     n++;
-//   }
-//   return n;
-// }
+function nextPalindrome(n) {
+  n++;
+  console.log('n', n)
+  while (!isPalindrome(n.toString())) {
+    n++;
+  }
+  return n;
+}
 
-// function isPalindrome(str) {
-//     console.log('str', str)
-//   return str === str.split("").reverse().join("");
-// }
+function isPalindrome(str) {
+    console.log('str', str)
+  return str === str.split("").reverse().join("");
+}
 
 
 // var result = nextPalindrome(112);
