@@ -27,7 +27,7 @@
     console.log("objobj", array1)
 
 
-  var findMaxNumber = [5, 8, 3, 9, 19, 00]
+  var findMaxNumber = [5, 8, 3, 9, 19]
   var maxNumber = [0];
 
   for(let i=0; i< findMaxNumber.length; i++) {

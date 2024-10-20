@@ -32,3 +32,19 @@
     //  acc 0 and current 2 condition Match 0 + 2 return 2
     //  acc 2 and current 3 condition not match return 2
     //  acc 2 and current 4 condition match return 2 + 4 = 6
+
+# 5. Output
+
+    var outer = function() {
+        let count =0;
+
+        return function inner () {
+            count++
+            console.log(count)
+        }
+    }
+
+    const outers = outer()
+    console.log("outers",outers)
+    outers()
+    outers()

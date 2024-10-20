@@ -39,6 +39,7 @@
         console.log("Say hi")
     }
  }
+
  import { component, ViewChild, AfterViewInit } from "@angular/core"
  import { ChildComponent } from "./childComponent"
  @component({
