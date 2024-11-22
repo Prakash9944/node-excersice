@@ -93,5 +93,58 @@
             }
         }
 
+# Observable
 
+    # An Observable is a collection of values over time that can be observed. It is a "cold" producer of data, meaning it does not produce values until there are subscribers.
 
+    import { Component, VERSION } from '@angular/core';
+    import { Observable } from 'rxjs';
+    @Component({
+      selector: 'my-app',
+      templateUrl: './app.component.html',
+      styleUrls: ['./app.component.css'],
+    })
+    export class AppComponent {
+      name = 'Angular ' + VERSION.major;
+
+      observabl = new Observable<Number>((obs) => {
+        obs.next(5);
+        obs.next(10);
+        obs.error('Error: throwing from ja');
+
+        setTimeout(function () {
+          obs.next(20);
+          obs.complete();
+        }, 1000);
+      }).subscribe({
+        next(resutl) {
+          console.log('Result', resutl);
+        },
+        error(err) {
+          console.log(err);
+        },
+        complete() {
+          console.log('Result is competed');
+        },
+      });
+    }
+
+    # another Example
+
+    const observable = new Observable<number>((observer) => {
+        observer.next(1);
+        observer.next(2);
+        observer.complete();
+    });
+
+    observable.subscribe((value) => console.log('Observer 1:', value));
+    observable.subscribe((value) => console.log('Observer 2:', value));
+    // Output:
+    // Observer 1: 1
+    // Observer 1: 2
+    // Observer 2: 1
+    // Observer 2: 2
+
+# Subject
+
+    # A Subject is a special type of observable that allows values to be multicasted to many observers. It is both an observable and an observer. It can emit values to its subscribers and also allows you to manually push values into it
