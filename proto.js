@@ -1,95 +1,47 @@
-var User = function (firstName, courseCount) {
+/*
+    JavaScript uses prototypal inheritance, where objects can inherit properties and methods from other objects. 
+    Each object has a prototype, and if a property or method isn't found on the object itself, JavaScript looks up the prototype chain until it finds it. 
+    Prototype mean inherit parent object to child using __proto__
+*/
+// var User = function (firstName, courseCount) {
+//     this.courseCount = courseCount;
+//     this.firstName =  firstName;
 
-    this.courseCount = courseCount;
-    this.firstName =  firstName;
+//     this.getCourseCount = function () {
+//         console.log(`Get your course count ${this.courseCount}`)
+//     }
+// }
 
-    this.getCourseCount = function () {
-        console.log(`Get your course count ${this.courseCount}`)
-    }
-}
-
-
-// // User.prototype.getSome = function() {
-
-// //     console.log('this.firstNames', firstName)
-// // };
-
-
-// // var r1 = new User('PrakashRaj', 10);
-
-// // console.log('req', r1.getSome())
-
-
-
-
-// // function Employee (name) {
-// //     this.name = name;
-// // }
-
-// // var e1 = new Employee("Mark");
-// // e1.getName = function () {
-// //     return this.class = 'test'
-// // }
-
-// // console.log(e1.getName())
-
+// User.prototype.getSome = function() {
+//     console.log('Debug: ', this.firstName)
+// };
+// var instance = new User('PrakashRaj', 10);
+// instance.getSome()
 
 // var Employee = function (name) {
 //     this.name = name;
 // }
-
 // Employee.prototype.getName = function () {
 //     console.log(this.name)
 // }
-
-
-// var PermenantEmployee = function (annualSalary) {
-//     this.annualSalary = annualSalary;
-// }
-
-
 // var employee = new Employee('Prakash');
+// employee.getName()
 
-// PermenantEmployee.prototype = employee;
 
-
-// var pe = new PermenantEmployee(5000);
-
-// pe.getName()
-
-// console.log(pe  instanceof Employee)
-
-// Prototype mean inherit parent object to child using __proto__
-
-let user = {
-    name: "Prakash",
-    pageAccess: ["login", "dashboard", "contact"],
-    set setName(value) {
-        this.name =value
-    },
-    get getName() {
-        return this.name
-    }
+function Animal(name) {
+  this.name = name;
 }
 
-let admin = {
-    isAdmin: true,
-    __proto__: user
-}
-console.log('user', user)
-// "user"
-// [object Object] {
-//   getName: "Prakash",
-//   name: "Prakash",
-//   pageAccess: ["login", "dashboard", "contact"],
-//   setName: undefined
-// }
+Animal.prototype.sayName = function() {
+  console.log(`My name is ${this.name}`);
+};
 
-console.log('admin', admin)
-// [object Object] {
-//   getName: "Prakash",
-//   isAdmin: true,
-//   name: "Prakash",
-//   pageAccess: ["login", "dashboard", "contact"],
-//   setName: undefined
-// }
+function Dog(name, breed) {
+  Animal.call(this, name);
+  this.breed = breed;
+}
+
+Dog.prototype = Object.create(Animal.prototype);
+
+const myDog = new Dog('Buddy', 'Golden Retriever');
+myDog.sayName(); 
