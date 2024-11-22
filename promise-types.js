@@ -8,12 +8,12 @@
 
 // Promise.allSettled takes an array of promises and returns a single promise that resolves after all of the promises in the array have either resolved or rejected. It returns an array of objects describing the outcome of each promise.
 
-const promises = [
-    Promise.resolve(1),
-    Promise.resolve(2),
-    Promise.reject(new Error('Error occurred from promise')),
-    Promise.resolve(3)
-];
+// const promises = [
+//     Promise.resolve(1),
+//     Promise.resolve(2),
+//     Promise.reject(new Error('Error occurred from promise')),
+//     Promise.resolve(3)
+// ];
 
 // Promise
 // .allSettled(promises)
@@ -152,21 +152,21 @@ const promises = [
 //     console.error(error);
 // });
 
-// const fetchWithTimeout = (url, timeout) => {
-//     const fetchPromise = fetch(url);
+const fetchWithTimeout = (url, timeout) => {
+    const fetchPromise = fetch(url);
 
-//     const timeoutPromise = new Promise((_, reject) => {
-//         setTimeout(() => reject(new Error('Request timed out')), timeout);
-//     });
+    const timeoutPromise = new Promise((_, reject) => {
+        setTimeout(() => reject(new Error('Request timed out')), timeout);
+    });
 
-//     return Promise.race([fetchPromise, timeoutPromise]);
-// };
+    return Promise.race([fetchPromise, timeoutPromise]);
+};
 
-// fetchWithTimeout('https://jsonplaceholder.typicode.com/todos/1', 1000)
-// .then((response) => response.json())
-// .then((data) => {
-//     console.log(data);
-// })
-// .catch((error) => {
-//     console.error(error);  // Output: 'Request timed out' if the request takes longer than 5000ms
-// });
+fetchWithTimeout('https://jsonplaceholder.typicode.com/todos/1', 1000)
+.then((response) => response.json())
+.then((data) => {
+    console.log(data);
+})
+.catch((error) => {
+    console.error(error);  // Output: 'Request timed out' if the request takes longer than 5000ms
+});
