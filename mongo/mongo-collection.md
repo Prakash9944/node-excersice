@@ -1,30 +1,45 @@
-db.project.insertMany([{
-    "_id" : ObjectId("527a6b7c24a8874c078b9d19"),
-    "day" : 6,
-    "hour" : 15,
-    "hourlyLocations" : [
-        {
-            "countryName" : "Spain",
-            "countryCode" : "ES",
-            "cityName" : "chennai",
-            "latitude" : 40,
-            "longitude" : -4
-        },
-        {
-            "countryName" : "United Kingdom",
-            "countryCode" : "GB",
-            "cityName" : "london",
-            "latitude" : 51.5,
-            "longitude" : -0.13
-        }
-    ],
-    "minute" : 18,
-    "month" : 11,
-    "year" : 2013
-}])
+1. db.employee.insertMany([{"name": "david", "gender": "female", "age": 59, tags: ['backend', 'php'], company: {location: { country: 'usa'}}},
+    {"name": "david", "gender": "female", "age": 59, tags: ['backend', 'php'], company: {location: { country: 'australia'}}},
+    {"name": "david", "gender": "female", "age": 59, tags: ['backend', 'php'], company: {location: { country: 'australia'}}},
+    {"name": "david", "gender": "female", "age": 59, tags: ['backend', 'php'], company: {location: { country: 'london'}}},
+    {"name": "david", "gender": "female", "age": 59, tags: ['backend', 'php'], company: {location: { country: 'london'}}},
+    {"name": "david", "gender": "female", "age": 59, tags: ['backend', 'php'], company: {location: { country: 'paris'}}},
+    {"name": "david", "gender": "female", "age": 59, tags: ['backend', 'php'], company: {location: { country: 'paris'}}},
+    {"name": "david", "gender": "female", "age": 59, tags: ['backend', 'php'], company: {location: { country: 'paris'}}},
+    {"name": "david", "gender": "female", "age": 59, tags: ['backend', 'php'], company: {location: { country: 'paris'}}},
+    {"name": "david", "gender": "female", "age": 59, tags: ['backend', 'php'], company: {location: { country: 'canada'}}},
+    {"name": "david", "gender": "female", "age": 59, tags: ['backend', 'php'], company: {location: { country: 'canada'}}}])
 
 
-db.deal.insertMany([{
+2. db.product.insertMany([])
+    {accountId: '1234', name: 'prakash', address: 'chennai', street: 'north', mob: '994455', state: 'tamilnadu'},
+    {accountId: '12345', name: 'raj', address: 'chennai', street: 'east', mob: '994455', state: 'kerla'},
+    {accountId: '12345', name: 'rajesh', address: 'chennai', street: 'east', mob: '994455', state: 'delhi'},
+    {accountId: '12346', name: 'prakash', address: 'chennai', street: 'south', mob: '994455', state: 'mumbai'},
+    {accountId: '12347', name: 'mukesh', address: 'chennai', street: 'south', mob: '994455', state: 'up'},
+    {accountId: '12348', name: 'raj', address: 'chennai', street: 'walmart', mob: '994455', state: 'mp'},
+    {accountId: '12349', name: 'pk', address: 'chennai', street: 'walmart', mob: '994455', state: 'assam'},
+    {accountId: '123410', name: 'dk', address: 'chennai', street: 'nokaya', mob: '994455', state: 'nepal'},
+    {accountId: '123411', name: 'prakash', address: 'chennai', street: 'nokaya', mob: '994455', state: 'bopal'},
+    {accountId: '123412', name: 'prakash', address: 'chennai', street: 'nokaya', mob: '994455', state: 'kashmir'},
+    {accountId: '123413', name: 'dk', address: 'chennai', street: 'north', mob: '994455', state: 'punjab'},
+    {accountId: '123414', name: 'dk', address: 'chennai', street: 'north', mob: '994455', state: 'karnataka'},
+    {accountId: '123415', name: 'prakash', address: 'chennai', street: 'north', mob: '994455', state: 'andra'},
+    {accountId: '123416', name: 'rajesh', address: 'chennai', street: 'north', mob: '994455', state: 'hariyana'},
+    {accountId: '123417', name: 'rajesh', address: 'chennai', street: 'north', mob: '994455', state: 'telungana'},
+    {accountId: '123418', name: 'prakash', address: 'chennai', street: 'north', mob: '994455', state: 'telungana'},
+    {accountId: '123419', name: 'raj', address: 'chennai', street: 'mknagar', mob: '994455', state: 'punjab'},
+    {accountId: '123420', name: 'raj', address: 'chennai', street: 'north', mob: '994455', state: 'punjab'},
+    {accountId: '123421', name: 'prakash', address: 'chennai', street: 'north', mob: '994455', state: 'delhi'},
+    {accountId: '123422', name: 'pk', address: 'chennai', street: 'north', mob: '994455', state: 'tamilnadu'},
+    {accountId: '123423', name: 'pk', address: 'chennai', street: 'north', mob: '994455', state: 'delhi'}
+
+
+3. db.user.insertMany([{accountId: '1234', employee: 'IT'},{accountId: '12345', employee: 'IT'},{accountId: '12346', employee: 'IT'},{accountId: '12347', employee: 'IT'},{accountId: '12348', employee: 'IT'},{accountId: '12349', employee: 'IT'},{accountId: '123410', employee: 'IT'},{accountId: '123411', employee: 'IT'},{accountId: '123412', employee: 'IT'},{accountId: '123413', employee: 'IT'},{accountId: '123414', employee: 'IT'},{accountId: '123415', employee: 'IT'},{accountId: '123416', employee: 'IT'},{accountId: '123417', employee: 'IT'},{accountId: '1234', employee: 'IT'},{accountId: '1234', employee: 'IT'},{accountId: '1234', employee: 'IT'},{accountId: '1234', employee: 'IT'},{accountId: '1234', employee: 'IT'},{accountId: '1234', employee: 'IT'},{accountId: '1234', employee: 'IT'},{accountId: '1234', employee: 'IT'},{accountId: '1234', employee: 'IT'},{accountId: '1234', employee: 'IT'},{accountId: '1234', employee: 'IT'},{accountId: '1234', employee: 'IT'},{accountId: '1234', employee: 'IT'},{accountId: '1234', employee: 'IT'},{accountId: '1234', employee: 'IT'},{accountId: '1234', employee: 'IT'},{accountId: '1234', employee: 'IT'},{accountId: '1234', employee: 'IT'},{accountId: '1234', employee: 'IT'},{accountId: '1234', employee: 'IT'}])
+
+
+
+`db.deal.insertMany([{
    "_id":"123",
    "status":"New",
    "deal_amount":"5200",
@@ -50,11 +65,9 @@ db.deal.insertMany([{
    "data_source":"API",
    "deal_type":"New Business",
    "account_id":"A2"
-}])
+}])`
 
-
-
-db.gender.insertMany([{
+`db.gender.insertMany([{
     "_id" : ObjectId("53f63fc8f2b643f6ebb8a1a9"),
     "DOB" : 19690112,
     "GENDER" : "F",
@@ -71,20 +84,15 @@ db.gender.insertMany([{
     "DOB" : 19430216,
     "GENDER" : "M",
     "BRAINSCORE" : 71
-}])
+}])`
 
-
-db.complex.insertMany([
-
+`db.complex.insertMany([
 { "_id" : ObjectId("5407c76b7b1c276c74f90524"), "field" : "x", "arrayOfValues" : [ "a", "b", "c" ] },
 { "_id" : ObjectId("5407c76b7b1c276c74f90525"), "field" : "x", "arrayOfValues" : [ "b", "c" ] },
 { "_id" : ObjectId("5407c76b7b1c276c74f90526"), "field" : "z", "arrayOfValues" : [ "a" ] },
 { "_id" : ObjectId("5407c76b7b1c276c74f90527"), "field" : "x", "arrayOfValues" : [ "a", "c" ] },
 { "_id" : ObjectId("5407c76b7b1c276c74f90528"), "field" : "z", "arrayOfValues" : [ "b" ] },
-{ "_id" : ObjectId("5407c76b7b1c276c74f90529"), "field" : "y", "arrayOfValues" : [ "k" ] },])
-
-
-
+{ "_id" : ObjectId("5407c76b7b1c276c74f90529"), "field" : "y", "arrayOfValues" : [ "k" ] },])`
 
 db.people.insertMany([{ "people" : "Nick", "price" : 10, "quantity" : 2, "date" : ISODate("2014-01-01T08:00:00Z") },
 { "people" : "Prakash", "price" : 20, "quantity" : 1, "date" : ISODate("2014-02-03T09:00:00Z") },
@@ -170,32 +178,3 @@ db.people.insertMany([{ "people" : "Nick", "price" : 10, "quantity" : 2, "date" 
 { "people" : "Raj", "price" : 5, "quantity" : 10, "date" : ISODate("2014-02-15T09:05:00Z") },
 { "people" : "Raj", "price" : 5, "quantity" : 5, "date" : ISODate("2014-02-15T12:05:10Z") },
 { "people" : "Virat", "price" : 33335, "quantity" : 1330, "date" : ISODate("2014-02-15T14:12:12Z") }])
-
-
-
-
-
-db.countries.insertMany([{
-  "name": "Australia",
-  "code": "AU",
-  "_id": 123
-}, {
-  "name": "New Zealand",
-  "code": "NZ",
-  "_id": 321
-}])
-
-
-
-db.planning.inserMany([{ "_id" : 1, "name" : "A", "hours" : 80, "resources" : 7 }, { "_id" : 2, "name" : "B", "hours" : 40, "resources" : 4 }])
-
-db.purchases.insertMany([{name: 'Pasupathi', purchasedpeoples: [{i_name: 'shirt', qntity: 29}, {i_name: 'laptop', qntity: 10}, {i_name: 'saree', qntity: 71}, {i_name: 'car', qntity: 31}]}])
-
-
-db.sales.insertMany([{ "_id" : 1, "people" : "Nick", "price" : 10, "quantity": 2, date: ISODate("2014-03-01T08:00:00Z") },
-{ "_id" : 2, "people" : "Prakash", "price" : 20, "quantity": 1, date: ISODate("2014-03-01T09:00:00Z") },
-{ "_id" : 3, "item" : "Raj", "price" : 5, "quantity": 10, date: ISODate("2014-03-15T09:00:00Z") }])
-
-
-
-{$map: {input: "$quizzes", as: "grade", in: { $add: [ "$$grade", 2 ] }}}
