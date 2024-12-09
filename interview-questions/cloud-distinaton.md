@@ -8,6 +8,35 @@ const limitPerTransction = 400
 // [1, 2, 4, 5, 6, 3]
 
 
+let arr = [1200, 400, 300, 2000, 1500]
+
+let exitQueue = [];
+let withdrawQueue = [];
+
+let contiLoop = true;
+
+while(contiLoop) {
+    for (let i =0; i < arr.length; i++) {
+      if (exitQueue.includes(i+1)) {
+        continue;
+      }
+
+      withdrawQueue.push(i+1);
+
+      arr[i] = arr[i] - 400;
+
+      if (arr[i] <= 0) {
+        exitQueue.push(i+1)
+      }
+    }
+
+    if (exitQueue.length === arr.length) {
+      contiLoop = false
+    }
+}
+
+console.log(withdrawQueue)
+console.log(exitQueue)
 
 var string = 'hihelloworld';
 var unique = '';

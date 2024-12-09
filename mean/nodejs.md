@@ -267,3 +267,9 @@
 
     # Answer:-
         constructor is a function that creates an instance of a class which is typically called an “object”. In JavaScript
+
+25. what is http Get?
+
+    # Answer:-
+        Retrieve data from a server without modifying it.
+

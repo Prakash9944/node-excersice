@@ -80,6 +80,7 @@
     # Answer:-
         1. Mongodb stages are independent and all stage operator prepended by dollar sign
             { $match: {query} }
+
         2. Stages Types:-
             1. $count
             2. $group
@@ -91,7 +92,6 @@
             8. $project
             9. $unwind
             10. $unset
-
 
 4. What is expression?
 
