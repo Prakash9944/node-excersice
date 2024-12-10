@@ -67,10 +67,6 @@ var findMaxNumber = function (array) {
 
 console.log("Debug Log: Max number ", findMaxNumber([4, 5, 6, 1, 8, 10, 78, -89]))
 
-
-
-
-
 var loopObject = function (arry) {
     
     arry.forEach((item, key) => {

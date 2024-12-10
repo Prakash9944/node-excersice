@@ -1,12 +1,18 @@
 1. what is nodejs
 
     # Answer:-
-        Node. js is a platform built on Chrome's JavaScript runtime for easily building fast and scalable network applications. Node. ... js is an open source, cross-platform runtime environment for developing server-side and networking applications.
+        1. Node.js is an open-source, cross-platform JavaScript runtime environment that allows developers to build web applications outside of a browser
+
+        2. Node.js is used to create server-side web applications. It's popular for data-intensive applications because it uses an asynchronous, event-driven model.
+
+        3.  Node.js runs the V8 JavaScript engine, which is the core of Google Chrome, outside of the browser.
 
 2. What is the Event Loop in Node.js, and how does it work?
 
     # Answer:-
-        The Event Loop is a core part of Node.js, allowing it to handle non-blocking I/O operations. It works on a single-threaded architecture to process asynchronous callbacks.
+        1. The Event Loop is a core part of Node.js, allowing it to handle non-blocking I/O operations. It works on a single-threaded architecture to process asynchronous callbacks.
+
+        2. The event loop is a mechanism that allows JavaScript to handle multiple operations simultaneously without creating new threads.
 
     # Phases in the Event Loop:
         1. Timers: Executes setTimeout and setInterval callbacks.
@@ -39,7 +45,7 @@
 
     # Answer:-
         1. Error Handling Middleware (Express Applications):-
-            * In Express, you can define a custom error-handling middleware function. It is invoked whenever next(err) is called with an error object.
+            * In Express, you can define a custom error-handling middle-ware function. It is invoked whenever next(err) is called with an error object.
 
                 app.use((err, req, res, next) => {
                     console.error(err.stack); // Log the error
@@ -72,6 +78,11 @@
     # Answer:
         1. Streams are objects in Node.js that enable reading and writing data continuously in chunks rather than loading the entire data into memory.
 
+    # Advantages:-
+        1. Memory Efficiency: Process large data without loading it entirely into memory.
+        2. Time Efficiency: Start processing data as soon as chunks are available.
+        3. Powerful Chaining: Pipe streams together to perform multiple operations.
+
     # Types of Streams:
         1. Readable:
             Data can be read, e.g., fs.createReadStream().
@@ -100,7 +111,7 @@
     # Answer:-
         1. Clustering: Use the cluster module to fork the process and utilize multiple CPU cores.
         2. Load Balancing: Use a reverse proxy like NGINX or cloud services to distribute traffic across
-        3. Microservices: Break the application into smaller, independent services.
+        3. Micro-services: Break the application into smaller, independent services.
         4. Use Caching: Implement caching with Redis or Memcached for frequently accessed data.
         5. Horizontal Scaling: Use container orchestration tools like Docker and Kubernetes for deploying multiple instances.
 
@@ -197,12 +208,71 @@
         1. EventEmitter is a class that holds all the objects that can emit events
         2. Whenever an object from the EventEmitter class throws an event, all attached functions are called upon synchronously
         3. EventEmitter provides multiple properties like on and emit. on property is used to bind a function with the event and emit is used to fire an event.
+        4. emitter.on(eventName, callback): Used to register a listener for an event.
+        5. emitter.emit(eventName, [...args]): Used to emit an event, triggering the execution of all registered listeners.
+
+        const EventEmitter = require('events');
+        const myEmitter = new EventEmitter();
+
+        myEmitter.on('greet', () => {
+            console.log('Hello, World!');
+        });
+        myEmitter.emit('greet');
+
+        # EventEmitter in Practical Use:-
+
+            const fs = require('fs');
+            const readStream = fs.createReadStream('file.txt');
+
+            // Listen for the 'data' event to read chunks of data
+            readStream.on('data', (chunk) => {
+              console.log('Received chunk:', chunk);
+            });
+
+            // Listen for the 'end' event when the file is fully read
+            readStream.on('end', () => {
+              console.log('File reading completed.');
+            });
 
 16. What are the two types of API functions in Node.js?
 
     # Answer:- The two types of API functions in Node.js are:
     1. Asynchronous, non-blocking functions
+        # Answer:-
+            1. Asynchronous functions in Node.js execute tasks in a non-blocking manner, allowing the event loop to continue processing other tasks while waiting for a function to complete.
+            2. Ideal for I/O tasks such as reading files, network requests, or database queries.
+
+            const fs = require('fs');
+            // Asynchronous file read
+            fs.readFile('file.txt', 'utf8', (err, data) => {
+                if (err) {
+                    console.error('Error reading file:', err);
+                } else {
+                    console.log(data); // Output: Content of file.txt
+                }
+            });
+            console.log('File read initiated'); // This will be logged before the file content due to async behavior
+
     2. Synchronous, blocking functions
+        # Answer:-
+            1. Synchronous functions in Node.js execute tasks in a blocking manner. This means that the function will not return control to the event loop until it has finished executing its operation. This can cause performance bottlenecks if not used carefully
+            2. fs.readFileSync() reads the file content synchronously. The program waits for the file to be read before moving to the next statement.
+            3. Ideal for small or non-I/O intensive tasks.
+
+            const fs = require('fs');
+            // Synchronous file read
+            try {
+                const data = fs.readFileSync('file.txt', 'utf8');
+                console.log(data); // Output: Content of file.txt
+            } catch (err) {
+                console.error('Error reading file:', err);
+            }
+
+    3. When to Use Each:-
+        # Answer:-
+            1. Use synchronous functions when the operation is quick and does not involve I/O or when you need to ensure that the task completes before proceeding.
+
+            2. Use asynchronous functions for I/O operations, networking, or tasks that may take a long time to avoid blocking the event loop and to improve performance in high-concurrency environments.
 
 17. what are the NodeJs Modules?
 
@@ -212,20 +282,44 @@
 18. SetInterval and SetTimeOut differences
 
     # Answer:-
-        1. setTimeout allows us to run a function once after the interval of time. setInterval allows us to run a function repeatedly, starting after the interval of time, then repeating continuously at that interval
+        1. setTimeout allows us to run a function once after the interval of time.
+        2. setInterval allows us to run a function repeatedly, starting after the interval of time, then repeating continuously at that interval
 
 19. what is callback function?
 
     # Answer:-
         1. a function passed into another parameter called callback function
+        2. callback is a function called at the completion of a given task; this prevents any blocking
+        3. This allows for asynchronous behavior, where the callback function is invoked after some operation
+        4. Asynchronous Nature: Callbacks are commonly used in asynchronous operations (e.g., setTimeout, I/O operations).
 
-        2. callback is a function called at the completion of a given task; this prevents any blocking,
+    # Callback with Asynchronous Operations:-
+        // Simulate an asynchronous task with setTimeout
+        function fetchData(callback) {
+            console.log('Fetching data...');
+            setTimeout(() => {
+                console.log('Data fetched!');
+                callback();  // Once data is fetched, call the callback function
+            }, 2000);
+        }
 
-20. what is callback function?
+        // Callback function to be called after data is fetched
+        function processData() {
+            console.log('Processing data...');
+        }
+
+        // Call fetchData with processData as the callback
+        fetchData(processData);
+
+20. what is promise function?
 
     # Answer:-
         1. promise is an object that may produce a single value some time in the future: either a resolved value, or a reason that it's not resolved
             * fulfilled rejected, or pending
+
+    # Solutions to Callback Hell:-
+        1. Promises: Promises provide a more readable way to handle asynchronous code, avoiding the deep nesting of callbacks.
+        2. Async/Await: Introduced in ECMAScript 2017, async/await allows asynchronous code to be written in a more synchronous style, improving readability.
 
 21. what is async/await?
 
@@ -242,7 +336,7 @@
         2. What if there are no arguments?
             let sayHi = _ => console.log(“Hi”);
 
-        3. Arrow functions are only callable and not constructible, i.e arrow functions can never be used as constructor functions.
+        3. Arrow functions are only callable and not constructable, i.e arrow functions can never be used as constructor functions.
 
 23. what is hosting?
 
@@ -273,3 +367,43 @@
     # Answer:-
         Retrieve data from a server without modifying it.
 
+26. what is pipe in nodejs?
+
+    # Answer:-
+        Node.js, pipe is a method provided by the Stream module that connects a readable stream to a writable stream. This allows data to flow seamlessly between the two streams, making it a powerful way to handle streaming data operations such as reading from a file and writing to another file, or processing data in real-time.
+
+        1. File Operations: To efficiently transfer large files or streams without loading them entirely into memory.
+
+        2. Data Transformation: For transforming data streams, like compression or encryption, as data is being transferred.
+
+        3. Network Requests: When receiving data from one HTTP request and sending it to another service, such as piping data from an HTTP request to a file or another HTTP response.
+
+27. what is function declaration and expression?
+
+    # Answer:-
+        1. In JavaScript, function declaration and function expression are two ways of defining functions. They differ in syntax
+
+    # Function Declaration:-
+        1. Function declaration defines a function using the function keyword. It is hoisted, meaning it can be called before its definition in the code.
+
+        Example:-
+            console.log(add(2, 3)); // Works because of hoisting
+            function add(a, b) {
+                return a + b;
+            }
+
+        2. Hoisted: Function declarations are moved to the top of their scope, so they can be invoked before they appear in the code.
+        3. Can exist standalone, without being assigned to a variable.
+
+    # Function Expression:-
+        1. function expression defines a function and assigns it to a variable. It is not hoisted, meaning it cannot be used before its definition.
+
+        Example:-
+            console.log(subtract(5, 2)); // Error: subtract is not defined
+            const subtract = function (a, b) {
+                return a - b;
+            };
+            console.log(subtract(5, 2)); // Works: 3
+
+        2. Not Hoisted: Function expressions are not available until the code execution reaches them.
+        3. Useful for creating anonymous functions, which are functions without a name.
