@@ -235,7 +235,7 @@
             A special function that is called when an instance of a class is created. It is used for initializing class members, not for Angular-specific initialization logic.
 
         2. ngOnInit:-
-            A lifecycle hook called after Angular has initialized all data-bound properties of a component. It’s a good place to perform initialization tasks that require the component’s inputs to be set.
+            A life-cycle hook called after Angular has initialized all data-bound properties of a component. It’s a good place to perform initialization tasks that require the component’s inputs to be set.
 
 13. What are Angular Lifecycle Hooks?
 
@@ -262,7 +262,7 @@
 
         1. Faster rendering
         2. Fewer asynchronous requests
-        3. Smaller Angular framework download size
+        3. Smaller bundle size because Angular's compiler is not included in the bundle.
         4. Quick detection of template errors
         5. Better security
 
@@ -791,4 +791,75 @@
         takeFive.subscribe(x => console.log(x));
         output: Logs: 0 1 2 3 4
 
-32.
+32. what is ngOnChanges?
+
+    # Answer:-
+        1. Detecting changes in @Input() property values when a parent component updates the data.
+
+        2. Parent component passes a count value to a child component. The child needs to respond whenever this value changes.
+
+    # When to Use:-
+        1. When you want to monitor changes in input properties and perform actions accordingly.
+
+        // Parent Component
+        @Component({
+          selector: 'app-parent',
+          template: `
+            <button (click)="increment()">Increment</button>
+            <app-child [count]="counter"></app-child>
+          `,
+        })
+        export class ParentComponent {
+          counter = 0;
+
+          increment() {
+            this.counter++;
+          }
+        }
+
+        // Child Component
+        @Component({
+          selector: 'app-child',
+          template: `<p>Count: {{ count }}</p>`,
+        })
+        export class ChildComponent implements OnChanges {
+          @Input() count: number;
+
+          ngOnChanges(changes: SimpleChanges) {
+            if (changes['count']) {
+              console.log('Count changed to:', changes['count'].currentValue);
+            }
+          }
+        }
+
+32. what is ngAfterContentInit?
+
+    # Answer:-
+        1. Performing actions after <ng-content> content is initialized.
+
+        2. Parent component projects content into a child component, and the child logs or manipulates the content.
+
+    # When to Use:-
+        1. When you need to act after projected content (<ng-content>) initializes
+
+        // Parent Component
+        @Component({
+          selector: 'app-parent',
+          template: `
+            <app-child>
+              <p>Projected Content</p>
+            </app-child>
+          `,
+        })
+        export class ParentComponent {}
+
+        // Child Component
+        @Component({
+          selector: 'app-child',
+          template: `<ng-content></ng-content>`,
+        })
+        export class ChildComponent implements AfterContentInit {
+          ngAfterContentInit() {
+            console.log('Content projected successfully!');
+          }
+        }

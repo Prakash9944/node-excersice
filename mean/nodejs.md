@@ -407,3 +407,52 @@
 
         2. Not Hoisted: Function expressions are not available until the code execution reaches them.
         3. Useful for creating anonymous functions, which are functions without a name.
+
+28. What is fork in nodejs?
+
+    # Answer:-
+        1. In Node.js, fork refers to a method used to create child processes. The concept is available through the child_process module
+
+        2. fork() method spawns a new Node.js process (a child process) and establishes a communication channel between the parent and child processes. This makes it a specialized way to create child processes that can run separate tasks but still communicate via messaging.
+
+    # When Do You Need fork?
+
+        1. Heavy Computations:-
+            1. Node.js is single-threaded, so heavy computations can block the event loop. Offloading such tasks to a child process using fork helps keep the main thread responsive.
+
+        2. Parallel Processing:
+            2. If you need to run multiple tasks concurrently, you can use fork() to create multiple processes.
+
+        3. Worker Processes:
+            3. For implementing worker threads or distributing tasks across processes (e.g., CPU-intensive tasks like image processing or video encoding).
+
+        4. Isolation:-
+            4. When you want to isolate a particular task or script, a separate process ensures that it doesn’t affect the main application.
+
+        5. CPU-intensive tasks like data processing or file parsing.
+
+        6. Offloading tasks to avoid blocking the main event loop.
+
+        7. Running a separate Node.js script in parallel to the main application.
+
+        const { fork } = require('child_process');
+
+        // Parent process
+        console.log('Parent process started');
+
+        const child = fork('child.js'); // Specify the script for the child process
+
+        // Send a message to the child
+        child.send({ hello: 'world' });
+
+        // Listen for messages from the child
+        child.on('message', (msg) => {
+            console.log('Message from child:', msg);
+        });
+
+        // Child process script (child.js)
+        process.on('message', (msg) => {
+            console.log('Message from parent:', msg);
+            // Reply to the parent process
+            process.send({ reply: 'Hello from child!' });
+        });

@@ -53,21 +53,21 @@ console.log("Result11", result)
 
 // console.log("Result: ", returnObj())
 
-// var fun = function () {
-//   return new Promise((resolve, reject) => {
-//     return setTimeout(function() {
-//         return resolve(true)
-//     }, 1000)
-// })
-// }
+var fun = function () {
+  return new Promise((resolve, reject) => {
+    return setTimeout(function() {
+        return resolve(true)
+    }, 1000)
+})
+}
 
-// var printNumber = async function () {
-//     for (let i=0; i <= 5; i++) {
-//         let data = await fun();
-//         console.log(data, "IIII", i)
-//     }
-// }
-// printNumber()
+var printNumber = async function () {
+    for (let i=0; i <= 5; i++) {
+        let data = await fun();
+        console.log(data, "IIII", i)
+    }
+}
+printNumber()
 
 
 var fun  = function (number) {
