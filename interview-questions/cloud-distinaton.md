@@ -110,3 +110,68 @@ sorting array of obect
 
 
 
+
+let array = [1900, 1000, 1500, 2000];
+let continueLoop = true;
+let exitQue = [];
+let withdraw = []
+let limit = 400;
+
+while(continueLoop) {
+    for (let i= 0; i < array.length; i++) {
+        if (exitQue.includes(i+1)) {
+            continue
+        }
+        withdraw.push(i+1)
+        array[i] = array[i] - 400;
+        if (array[i] <= 0) {
+            exitQue.push(i+1)
+        }
+    }
+
+    if (exitQue.length === array.length) {
+        continueLoop = false
+    }
+}
+
+With [ 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 3, 4, 1, 4 ]
+exitQue [ 2, 3, 1, 4 ]
+array [ -100, -200, -100, 0 ]
+
+console.log("With", withdraw)
+console.log("exitQue", exitQue)
+console.log("array", array)
+
+
+let arr = [1200, 400, 300, 2000, 1500]
+          // [800, 0, -100, 1600, 1500]
+          // [400, 0, 300, 2000, 1500]
+
+let exitQueue = [];
+let withdrawQueue = [];
+
+let contiLoop = true;
+
+while(contiLoop) {
+    for (let i =0; i < arr.length; i++) {
+      if (exitQueue.includes(i+1)) {
+        continue;
+      }
+
+      withdrawQueue.push(i+1);
+
+      arr[i] = arr[i] - 400;
+
+      if (arr[i] <= 0) {
+        exitQueue.push(i+1)
+      }
+    }
+
+    if (exitQueue.length === arr.length) {
+      contiLoop = false
+    }
+}
+
+console.log(withdrawQueue)
+console.log(exitQueue)
+console.log(arr)
