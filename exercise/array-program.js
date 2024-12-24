@@ -265,12 +265,26 @@ console.log("Unsorted Array:", unsortedArray);
 console.log("Sorted Array:", sortedArray);
 
 /*Array without Lopp*/
-var array = function(i) {
-    let arr = [2, 5, 6, 8, 0]
-    i++
-    if (i < arr.length) {
-       array(i)
+let arr = [2, 5, 6, 8, 0];
+function printArray(index) {
+    if (index < arr.length) {
+        console.log(arr[index]);
+        index++
+        printArray(index);
     }
 }
+printArray(0);
 
-array(0)
+/*Recursive function*/
+function printNumbers(num) {
+    if (num > 10) {
+        return;
+    }
+
+    console.log("DEBUG: Print number", num);
+    num++
+    printNumbers(num);
+}
+
+// Call the function
+printNumbers(1);
