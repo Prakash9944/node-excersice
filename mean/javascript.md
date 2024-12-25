@@ -101,3 +101,26 @@
 
             deepCopy.b.c = 20;
             console.log(obj.b.c); // 10 (unaffected in deep copy)
+
+8. JavaScript advanced
+
+    # Answer:-
+        1. Arrow functions (() => {})
+
+        2. Classes
+
+        3. Template literals: Template literals allow for easier string concatenation and embedding expressions inside strings.
+
+        4. Destructuring
+
+        5. Promises
+
+        6. Let and const for variable declaration
+
+        7. Classes
+
+        8. Promises and async/await
+
+        9. Modules
+
+        10. Spread and Rest Operators

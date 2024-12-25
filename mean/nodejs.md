@@ -142,6 +142,7 @@
                 }
                 console.log(data);
             });
+
 10. Global Error Handling
 
     # Answer:-
