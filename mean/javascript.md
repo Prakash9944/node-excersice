@@ -102,25 +102,49 @@
             deepCopy.b.c = 20;
             console.log(obj.b.c); // 10 (unaffected in deep copy)
 
-8. JavaScript advanced
+8. Modules and Import/Export?
 
     # Answer:-
-        1. Arrow functions (() => {})
+        1. Modular JavaScript improves code reusability and maintainability.
 
-        2. Classes
+    export function greet(name) {
+        return `Hello, ${name}!`;
+    }
+    export const PI = 3.14159;
 
-        3. Template literals: Template literals allow for easier string concatenation and embedding expressions inside strings.
+    import { greet, PI } from './module.js';
+    console.log(greet('Alice')); // Output: Hello, Alice!
+    console.log(`Value of PI: ${PI}`); // Output: Value of PI: 3.14159
 
-        4. Destructuring
+9. Destructuring and Spread/Rest Operators?
 
-        5. Promises
+    # Answer:-
+        1. Destructuring allows you to unpack values from arrays or properties from objects into distinct variables.
 
-        6. Let and const for variable declaration
+    # Destructuring:-
+        const user = { name: 'Alice', age: 25 };
+        const { name, age } = user;
+        console.log(name, age); // Output: Alice 25
 
-        7. Classes
+    # Spread Operator:-
+        1. Use the spread operator to merge or copy arrays/objects.
 
-        8. Promises and async/await
+        const arr1 = [1, 2, 3];
+        const arr2 = [...arr1, 4, 5];
+        console.log(arr2); // Output: [1, 2, 3, 4, 5]
 
-        9. Modules
+    # Rest Operator (...):-
+        1. The rest operator is used to gather the rest of the elements or properties into a new array or object. It's essentially the opposite of the spread operator.
+        2. Use the rest operator to handle the remaining data when destructuring.
 
-        10. Spread and Rest Operators
+        1. For Arrays?
+            const [first, ...rest] = ["apple", "banana", "cherry", "date"];
+            console.log(first); // "apple"
+            console.log(rest);  // ["banana", "cherry", "date"]
+
+        2. For Objects?
+            const person = { name: "John", age: 30, city: "New York" };
+            const { name, ...otherDetails } = person;
+
+            console.log(name);          // "John"
+            console.log(otherDetails);  // { age: 30, city: "New York" }
