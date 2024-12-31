@@ -13,6 +13,11 @@
 
         2. Transactional Workloads: Reading/writing a single record or a small set of records, as in OLTP (Online Transaction Processing) systems like relational databases.
 
+    # Row-oriented database, the data is stored like this:-
+        Row 1: 1, 2024-12-01, Laptop, 1, 1000
+        Row 2: 2, 2024-12-02, Monitor, 2, 200
+        Row 3: 3, 2024-12-03, Keyboard, 5, 50
+
 2. ClickHouse (Column-Oriented Database) Example?
 
     # Answer:-
@@ -26,6 +31,12 @@
     # Use Case:-
         1. ClickHouse is optimized for running fast aggregations, like calculating total revenue per product or total sales by region. These are common in data warehouses, where analysts run large-scale queries on historical data.
 
+    # column-oriented database, the data is stored like this:-
+        Column 1 (ID):       1, 2, 3
+        Column 2 (Date):     2024-12-01, 2024-12-02, 2024-12-03
+        Column 3 (Product):  Laptop, Monitor, Keyboard
+        Column 4 (Quantity): 1, 2, 5
+        Column 5 (Price):    1000, 200, 50
 
 3. Key Differences Illustrated with Examples?
 

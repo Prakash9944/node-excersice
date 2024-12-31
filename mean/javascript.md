@@ -148,3 +148,17 @@
 
             console.log(name);          // "John"
             console.log(otherDetails);  // { age: 30, city: "New York" }
+
+10. Higher-Order Functions?
+
+    # Answer:-
+        1. higher-order function is a function that takes one or more functions as arguments, returns a function, or both.
+
+    function multiplyBy(factor) {
+      return function (num) {
+        return num * factor;
+      };
+    }
+
+    const multiplyBy2 = multiplyBy(2);
+    console.log(multiplyBy2(5)); // Output: 10
