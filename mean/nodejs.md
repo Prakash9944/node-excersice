@@ -266,8 +266,13 @@
 17. What are Worker Threads in Node.js, and when would you use them?
 
     # Answer:-
-        1. Worker Threads allow Node.js to run JavaScript code in multiple threads for CPU-intensive tasks, overcoming the single-threaded nature of Node.js.
-        2. For CPU-bound operations like image processing, data compression, or complex calculations.
+        1. Worker threads in Node.js allow you to create multiple threads within a single process. Unlike fork, worker threads share memory with the parent thread, making them efficient for tasks that need shared resources.
+
+        2. Part of the same process, enabling memory sharing through SharedArrayBuffer and Suitable for CPU-intensive tasks like encryption, compression, or computations.
+
+        2. Worker Threads allow Node.js to run JavaScript code in multiple threads for CPU-intensive tasks, overcoming the single-threaded nature of Node.js.
+
+        3. For CPU-bound operations like image processing, data compression, or complex calculations.
 
         const { Worker } = require('worker_threads');
         const worker = new Worker(`
@@ -278,6 +283,11 @@
         `, { eval: true });
 
         worker.on('message', result => console.log(`Result: ${result}`));
+
+    # When to Use What?
+        1. When tasks require memory sharing.
+        2. For high-performance computations in a single process.
+        3. When lower overhead is required compared to forking.
 
 18. What is the difference between req.params, req.query, and req.body in Express?
 
@@ -513,14 +523,20 @@
 34. What is fork in nodejs?
 
     # Answer:-
-        1. In Node.js, fork refers to a method used to create child processes. The concept is available through the child_process module
+        1. The fork method in Node.js is used to create a new child process. This child process runs independently and has its own memory and execution context. The parent process communicates with the child process using an inter-process communication (IPC) channel.
 
-        2. fork() method spawns a new Node.js process (a child process) and establishes a communication channel between the parent and child processes. This makes it a specialized way to create child processes that can run separate tasks but still communicate via messaging.
+        2. Creates a completely new process with its own memory.
+
+        3. In Node.js, fork refers to a method used to create child processes. The concept is available through the child_process module
+
+        4. fork() method spawns a new Node.js process (a child process) and establishes a communication channel between the parent and child processes. This makes it a specialized way to create child processes that can run separate tasks but still communicate via messaging.
 
     # When Do You Need fork?
 
         1. Heavy Computations:-
-            1. Node.js is single-threaded, so heavy computations can block the event loop. Offloading such tasks to a child process using fork helps keep the main thread responsive.
+            1. When you need complete process isolation.
+
+            2. Node.js is single-threaded, so heavy computations can block the event loop. Offloading such tasks to a child process using fork helps keep the main thread responsive.
 
         2. Parallel Processing:
             2. If you need to run multiple tasks concurrently, you can use fork() to create multiple processes.
@@ -558,3 +574,44 @@
             // Reply to the parent process
             process.send({ reply: 'Hello from child!' });
         });
+
+36. Local Module vs Global module?
+
+    # Local Modules:-
+        1. Modules installed or created within a specific project.
+        2. They are available only to that project.
+        3. Stored in the node_modules directory within the project folder.
+        4. Used when you need a module for a single project.
+        5. The version installed locally (4.17.1) will be used because Node.js finds the local node_modules/express first.
+
+    # Example:-
+        1. npm install moment
+
+    # Global Modules
+        1. Modules installed globally on your system, available to all projects.
+        2. Installed using npm or yarn with the -g (global) flag.
+        3. Stored in a global directory (e.g., /usr/local/lib/node_modules on Unix or %APPDATA%\npm\node_modules on Windows).
+        4. Used when you need a module available system-wide, often for CLI tools.
+        5. If you want to use the global version, you must explicitly refer to its path. You can determine the global module's path using
+
+    # Example:-
+        npm install moment -g
+        const express = require('/path/to/global/node_modules/express');
+        console.log(`Using express version: ${express().constructor.name}`);
+
+
+36. Package.json  vs Package-lock.json ?
+
+    # Package.json:-
+        1. Defines the metadata of the project (e.g., name, version, author).
+        2. Lists the dependencies required by the project and their allowed versions (version range).
+        3. Contains version ranges for dependencies (^, ~, etc.) instead of fixed versions.
+        4. Used by npm or yarn to determine what packages to install.
+        5. Use package.json for defining dependencies and scripts.
+
+    # Package-lock.json:-
+        1. Automatically generated when you install dependencies (npm install).
+        2. Locks exact versions of the installed dependencies, including nested dependencies.
+        3. Ensures consistent installations across different environments (e.g., development, CI/CD).
+        4. express releases a newer version (e.g., 4.18.0), another developer might get that version instead, leading to inconsistencies.
+        5. Let package-lock.json handle version consistency.
